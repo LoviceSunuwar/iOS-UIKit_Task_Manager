@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    var userNames = [User(fullName: "User", email: "test@email.com", phone: "1234456788", password: "password", username: "user1")]; // will be replaced by db later
+    var userNames = [User(fullName: "User", email: "test@email.com", phone: "1234456788", password: "1234", username: "user")]; // will be replaced by db later
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         // check if username and password is correct
         if (userNames.first(where: {$0.username == name && $0.password == pw} ) != nil) {
             
-            // store username and password to check if user has logged in
+            // store username and password to check if user has logged in later
             let defaults = UserDefaults.standard
             defaults.set(name, forKey: "username")
             defaults.set(pw, forKey: "password")

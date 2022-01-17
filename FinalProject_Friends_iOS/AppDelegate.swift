@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = storyboard.instantiateViewController(withIdentifier: "TaskListNavigation") as! UINavigationController
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
-        print("here")
     }
     
     
