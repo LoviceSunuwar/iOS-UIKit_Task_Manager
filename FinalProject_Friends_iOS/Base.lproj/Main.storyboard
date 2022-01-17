@@ -623,10 +623,10 @@
             </objects>
             <point key="canvasLocation" x="897.10144927536237" y="800.89285714285711"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="kCq-t4-FQt">
             <objects>
-                <viewController id="GZ3-zz-9OP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" id="GZ3-zz-9OP" customClass="RegisterViewController" customModule="FinalProject_Friends_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bTz-ei-fNT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -695,6 +695,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Register" cornerStyle="capsule">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="register:" destination="GZ3-zz-9OP" eventType="touchUpInside" id="Paj-Cr-Zac"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="center" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="bQX-ok-yHX">
                                         <rect key="frame" x="0.0" y="552" width="314" height="35"/>
@@ -727,6 +730,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oxU-OP-unt"/>
+                    <connections>
+                        <outlet property="confirmPassword" destination="p85-hM-Pvq" id="7Do-Ea-999"/>
+                        <outlet property="email" destination="H2R-1v-jn6" id="ZbH-42-svR"/>
+                        <outlet property="fullName" destination="y83-6d-Gn1" id="OwZ-pE-ZHB"/>
+                        <outlet property="password" destination="1wO-jP-XFD" id="d6n-bT-Sj5"/>
+                        <outlet property="phone" destination="xcF-6Z-sez" id="etF-zi-YHI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgH-E8-VSA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

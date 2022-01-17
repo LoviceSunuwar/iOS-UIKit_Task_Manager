@@ -41,7 +41,6 @@ class LoginViewController: UIViewController {
             AppDelegate().window?.makeKeyAndVisible()
             
         } else {
-            print("Failed")
             let alertController = UIAlertController(title: "Unauthorized", message: "Username or password incorrect", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alertController, animated: true, completion: nil)
