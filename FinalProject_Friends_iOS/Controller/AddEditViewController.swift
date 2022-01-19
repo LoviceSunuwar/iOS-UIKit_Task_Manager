@@ -20,6 +20,7 @@ class AddEditViewController: UIViewController {
     var selectedCategory: Category!
     
     var images: [Data] = []
+    var imagePicker: ImagePicker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +136,20 @@ extension AddEditViewController: UICollectionViewDataSource {
             cell.setupEmptyData()
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if images.count == indexPath.row {
+            // add new image
+            imagePicker = ImagePicker(presentationController: self)
+            imagePicker?.present(from: self.view)
+            imagePicker?.completion = { [weak self] selectedImage in
+                guard let self = self else { return }
+                let imageData = selectedImage.jpegData(compressionQuality: 0.8)!
+                self.images.append(imageData)
+                self.reloadCollectionView()
+            }
+        }
     }
     
     

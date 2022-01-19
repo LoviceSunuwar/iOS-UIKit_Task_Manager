@@ -15,6 +15,7 @@
 		5B5A97482797DBC600759F8D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A97472797DBC600759F8D /* Task.swift */; };
 		5B5A974A2797E75D00759F8D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A97492797E75D00759F8D /* Category.swift */; };
 		5B5A974D2797E94600759F8D /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A974C2797E94600759F8D /* ImageCollectionViewCell.swift */; };
+		5B5A97512798733500759F8D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A97502798733500759F8D /* ImagePicker.swift */; };
 		5BC06E14278E6B99003FD541 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC06E13278E6B99003FD541 /* AppDelegate.swift */; };
 		5BC06E18278E6B99003FD541 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC06E17278E6B99003FD541 /* ViewController.swift */; };
 		5BC06E1B278E6B99003FD541 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC06E19278E6B99003FD541 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		5B5A97472797DBC600759F8D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		5B5A97492797E75D00759F8D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5B5A974C2797E94600759F8D /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B5A97502798733500759F8D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5BC06E10278E6B99003FD541 /* FinalProject_Friends_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject_Friends_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC06E13278E6B99003FD541 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BC06E17278E6B99003FD541 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,11 +83,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		5B5A974E2798533600759F8D /* New Group */ = {
+		5B5A974F2798732000759F8D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				5B5A97502798733500759F8D /* ImagePicker.swift */,
 			);
-			path = "New Group";
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		5BC06E07278E6B99003FD541 = {
@@ -107,7 +110,7 @@
 		5BC06E12278E6B99003FD541 /* FinalProject_Friends_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				5B5A974E2798533600759F8D /* New Group */,
+				5B5A974F2798732000759F8D /* Helper */,
 				5B5A974B2797E92A00759F8D /* View */,
 				5B5A97462797DBB200759F8D /* Model */,
 				5B57CBDA279517F700E5FE86 /* Controller */,
@@ -198,6 +201,7 @@
 				5B5A97482797DBC600759F8D /* Task.swift in Sources */,
 				5B5A974A2797E75D00759F8D /* Category.swift in Sources */,
 				5B5A974D2797E94600759F8D /* ImageCollectionViewCell.swift in Sources */,
+				5B5A97512798733500759F8D /* ImagePicker.swift in Sources */,
 				5B57CBD72794FFA300E5FE86 /* User.swift in Sources */,
 				5BC06E14278E6B99003FD541 /* AppDelegate.swift in Sources */,
 				5B57CBD52794FF8B00E5FE86 /* TaskListViewController.swift in Sources */,
@@ -351,6 +355,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinalProject_Friends_iOS/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App wants to take pictures of task";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App wants to get pictures for task";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -378,6 +384,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinalProject_Friends_iOS/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App wants to take pictures of task";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App wants to get pictures for task";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
