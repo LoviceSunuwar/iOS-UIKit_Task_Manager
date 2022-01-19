@@ -8,6 +8,8 @@
 import UIKit
 
 class TaskListViewController: UIViewController {
+    
+    var taskList = [Task]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,20 +27,15 @@ class TaskListViewController: UIViewController {
         navigationItem.title = ""
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func addtask(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEditViewController") as! AddEditViewController
-//        vc.delegate = self
+        vc.addToTaskList = addToTaskList
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func addToTaskList(task: Task){
+        taskList.append(task)
+        print("tasks", taskList.count)
     }
     
 }

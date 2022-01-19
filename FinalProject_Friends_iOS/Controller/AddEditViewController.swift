@@ -16,16 +16,19 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var task: Task! = nil
-    var category: [Category] =  [Category(id: 0, title: "work"), Category(id: 1, title: "School"), Category(id: 2, title: "Shopping"), Category(id: 3, title: "Groceries") ]
+    var category: [Category] =  [Category(id: 0, title: "Work"), Category(id: 1, title: "School"), Category(id: 2, title: "Shopping"), Category(id: 3, title: "Groceries") ]
     var selectedCategory: Category!
     
     var images: [Data] = []
     var imagePicker: ImagePicker?
     
+    var addToTaskList:((Task)->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        selectedCategory = category[0]
         setupPickerView()
         setupCollectionView()
     }
@@ -57,6 +60,7 @@ class AddEditViewController: UIViewController {
         task = Task(id: "123", title: title, category: selectedCategory, createDate: "\(Date())", endDate: "\(datePicker.date)", images: images, isCompleted: false)
         
         print(task.toString())
+        self.addToTaskList?(task)
         
         
         self.navigationController?.popViewController(animated: true)

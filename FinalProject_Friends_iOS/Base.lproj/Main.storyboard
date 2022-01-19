@@ -436,11 +436,11 @@
                                                                             <color key="backgroundColor" white="0.95341267619099646" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </imageView>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybB-KL-XS3">
-                                                                            <rect key="frame" x="72.5" y="-12.5" width="25" height="25"/>
+                                                                            <rect key="frame" x="70" y="-15" width="30" height="30"/>
                                                                             <color key="backgroundColor" name="AccentColor"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" secondItem="ybB-KL-XS3" secondAttribute="height" multiplier="1:1" id="YLj-pC-1Rq"/>
-                                                                                <constraint firstAttribute="height" constant="25" id="lcy-UT-RPj"/>
+                                                                                <constraint firstAttribute="height" constant="30" id="lcy-UT-RPj"/>
                                                                             </constraints>
                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <state key="normal" title="Button"/>
