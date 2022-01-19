@@ -52,6 +52,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="Tpd-X9-uI5"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Login" cornerStyle="capsule">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -89,7 +90,6 @@
                     <connections>
                         <outlet property="password" destination="nZc-r1-xK3" id="RGQ-4p-aqT"/>
                         <outlet property="username" destination="iig-UB-hyO" id="mPh-Go-6gR"/>
-                        <segue destination="Lj3-Wl-kYr" kind="push" id="Ewa-16-YA0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lu2-PF-mM2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -99,7 +99,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FinalProject_Friends_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="FinalProject_Friends_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,7 +188,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.231372565" green="0.32549020649999999" blue="0.68235301969999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="11e-kQ-Qnx" secondAttribute="trailing" constant="60" id="KCZ-k8-UMb"/>
@@ -236,7 +236,7 @@
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="55.580357142857139"/>
         </scene>
-        <!--Task List View Controller-->
+        <!--Task Manager-->
         <scene sceneID="xrF-BA-dux">
             <objects>
                 <viewController storyboardIdentifier="TaskListViewController" modalPresentationStyle="fullScreen" id="Lj3-Wl-kYr" customClass="TaskListViewController" customModule="FinalProject_Friends_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -253,6 +253,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="5hf-vF-O4c"/>
                                             <constraint firstAttribute="height" constant="55" id="u3U-mP-XlT"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Add Task" cornerStyle="capsule">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
@@ -261,7 +262,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ydd-4r-PS4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" id="R5c-dU-yDc">
@@ -366,11 +367,11 @@
                             <constraint firstItem="Oga-9F-2fa" firstAttribute="top" secondItem="Ydd-4r-PS4" secondAttribute="bottom" id="ivK-o5-ma8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eOm-Ya-MKI"/>
+                    <navigationItem key="navigationItem" title="Task Manager" id="eOm-Ya-MKI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKA-nB-ap5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3013" y="-29"/>
+            <point key="canvasLocation" x="3921.739130434783" y="-29.464285714285712"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="J0Q-xO-oQR">
@@ -438,6 +439,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="g1L-IE-fSZ"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Create Task" cornerStyle="capsule">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -458,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6X-RP-esM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179.71014492753625" y="1447.0982142857142"/>
+            <point key="canvasLocation" x="5526" y="-29"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="nUv-8R-jQZ">
@@ -569,6 +571,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="SSi-g6-eha"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Save" cornerStyle="capsule">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -579,8 +582,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="u8g-WV-JUp"/>
                                         </constraints>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Delete" cornerStyle="capsule">
+                                        <buttonConfiguration key="configuration" style="tinted" title="Delete" cornerStyle="capsule">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         </buttonConfiguration>
                                     </button>
@@ -621,7 +625,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyK-0l-BO9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897.10144927536237" y="800.89285714285711"/>
+            <point key="canvasLocation" x="4723" y="-29"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="kCq-t4-FQt">
@@ -691,6 +695,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="1Xf-sv-37e"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Register" cornerStyle="capsule">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -742,6 +747,25 @@
             </objects>
             <point key="canvasLocation" x="1919" y="372"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="c4B-vf-Kjx">
+            <objects>
+                <navigationController storyboardIdentifier="TaskListNavigation" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="b3w-xQ-IJv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="RLr-c5-aa2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4WW-JR-llu">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Lj3-Wl-kYr" kind="relationship" relationship="rootViewController" id="sHt-TT-CZh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFd-pO-n0D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3011.594202898551" y="-29.464285714285712"/>
+        </scene>
     </scenes>
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>
@@ -749,6 +773,9 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

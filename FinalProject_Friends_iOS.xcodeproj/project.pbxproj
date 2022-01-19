@@ -12,7 +12,6 @@
 		5B57CBD72794FFA300E5FE86 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD62794FFA300E5FE86 /* User.swift */; };
 		5B57CBD92795046D00E5FE86 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD82795046D00E5FE86 /* RegisterViewController.swift */; };
 		5BC06E14278E6B99003FD541 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC06E13278E6B99003FD541 /* AppDelegate.swift */; };
-		5BC06E16278E6B99003FD541 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC06E15278E6B99003FD541 /* SceneDelegate.swift */; };
 		5BC06E18278E6B99003FD541 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC06E17278E6B99003FD541 /* ViewController.swift */; };
 		5BC06E1B278E6B99003FD541 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC06E19278E6B99003FD541 /* Main.storyboard */; };
 		5BC06E1D278E6B9B003FD541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BC06E1C278E6B9B003FD541 /* Assets.xcassets */; };
@@ -26,7 +25,6 @@
 		5B57CBD82795046D00E5FE86 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5BC06E10278E6B99003FD541 /* FinalProject_Friends_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject_Friends_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC06E13278E6B99003FD541 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5BC06E15278E6B99003FD541 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5BC06E17278E6B99003FD541 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5BC06E1A278E6B99003FD541 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BC06E1C278E6B9B003FD541 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,6 +43,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B57CBDA279517F700E5FE86 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5B57CBD82795046D00E5FE86 /* RegisterViewController.swift */,
+				5B57CBD42794FF8B00E5FE86 /* TaskListViewController.swift */,
+				5B57CBD22794FF5200E5FE86 /* LoginViewController.swift */,
+				5BC06E17278E6B99003FD541 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		5BC06E07278E6B99003FD541 = {
 			isa = PBXGroup;
 			children = (
@@ -64,17 +73,13 @@
 		5BC06E12278E6B99003FD541 /* FinalProject_Friends_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5B57CBDA279517F700E5FE86 /* Controller */,
 				5BC06E13278E6B99003FD541 /* AppDelegate.swift */,
-				5BC06E15278E6B99003FD541 /* SceneDelegate.swift */,
-				5BC06E17278E6B99003FD541 /* ViewController.swift */,
 				5BC06E19278E6B99003FD541 /* Main.storyboard */,
 				5BC06E1C278E6B9B003FD541 /* Assets.xcassets */,
 				5BC06E1E278E6B9B003FD541 /* LaunchScreen.storyboard */,
 				5BC06E21278E6B9B003FD541 /* Info.plist */,
-				5B57CBD22794FF5200E5FE86 /* LoginViewController.swift */,
-				5B57CBD42794FF8B00E5FE86 /* TaskListViewController.swift */,
 				5B57CBD62794FFA300E5FE86 /* User.swift */,
-				5B57CBD82795046D00E5FE86 /* RegisterViewController.swift */,
 			);
 			path = FinalProject_Friends_iOS;
 			sourceTree = "<group>";
@@ -155,7 +160,6 @@
 				5B57CBD92795046D00E5FE86 /* RegisterViewController.swift in Sources */,
 				5B57CBD72794FFA300E5FE86 /* User.swift in Sources */,
 				5BC06E14278E6B99003FD541 /* AppDelegate.swift in Sources */,
-				5BC06E16278E6B99003FD541 /* SceneDelegate.swift in Sources */,
 				5B57CBD52794FF8B00E5FE86 /* TaskListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
