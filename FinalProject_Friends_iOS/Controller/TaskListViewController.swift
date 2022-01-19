@@ -66,6 +66,45 @@ extension TaskListViewController: UITableViewDataSource {
         return cell
     }
     
+    // MARK: trailingSwipeActionsConfigurationForRowAt
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let task = taskList[indexPath.row]
+        let delete = UIContextualAction(style: .destructive, title: "") { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            self.alert(message: "Are you sure you want to delete Task", title: "Alert", okAction: {
+                self.taskList.remove(at: indexPath.row)
+            })
+        }
+        
+        let update = UIContextualAction(style: .normal, title: "") { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEditViewController") as! AddEditViewController
+            vc.task = task
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        update.image = UIGraphicsImageRenderer(size: CGSize(width: 25, height: 30)).image(actions: { (_) in
+            UIImage(named: "edit_white")?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 28))
+        })
+        delete.image = UIGraphicsImageRenderer(size: CGSize(width: 25, height: 30)).image(actions: { (_) in
+            UIImage(named: "delete_white")?.draw(in: CGRect(x: 0, y: 0, width: 25, height: 25))
+        })
+        
+        delete.backgroundColor = .systemRed
+        update.backgroundColor = .systemYellow
+        
+        let configuration = UISwipeActionsConfiguration(actions: [delete, update])
+        return configuration
+    }
+    
+    func alert(message: String?, title: String? = nil, okAction: (()->())? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            okAction?()
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 
