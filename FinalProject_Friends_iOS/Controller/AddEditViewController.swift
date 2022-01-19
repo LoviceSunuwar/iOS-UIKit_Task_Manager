@@ -15,9 +15,10 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var task: Task! = nil
-    var category: [Category] =  [Category(id: 0, title: "Work"), Category(id: 1, title: "School"), Category(id: 2, title: "Shopping"), Category(id: 3, title: "Groceries") ]
+    var category: [Category] =  [Category(id: 0, title: "Work", icon: "suitcase.fill"), Category(id: 1, title: "School", icon: "book.fill"), Category(id: 2, title: "Shopping",icon: "bag.fill"), Category(id: 3, title: "Groceries", icon: "cart.fill") ]
     var selectedCategory: Category!
+    
+    var task: Task! = nil
     
     var images: [Data] = []
     var imagePicker: ImagePicker?
@@ -31,11 +32,28 @@ class AddEditViewController: UIViewController {
         selectedCategory = category[0]
         setupPickerView()
         setupCollectionView()
+        setupData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = (task != nil ? "Edit" : "Add") + "Task"
+        navigationItem.title = (task != nil ? "Edit" : "Add") + " Task"
+    }
+    
+    func setupData() {
+        if task != nil {
+            taskTitleTextField.text = task!.title
+            pickerView.selectRow(task.category.id, inComponent: 0, animated: true)
+            self.images = task.images
+            createButton.setTitle("Update", for: .normal)
+            datePicker.date = task.endDate.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss Z") ?? Date()
+            self.title = "Update Task"
+        } else {
+            createButton.setTitle("Create", for: .normal)
+            self.title = "Add Task"
+        }
+        
+        
     }
     
     func setupCollectionView() {
@@ -57,10 +75,16 @@ class AddEditViewController: UIViewController {
             self.alert(message: "Title is required", title: "Alert", okAction: nil)
             return
         }
-        task = Task(id: "123", title: title, category: selectedCategory, createDate: "\(Date())", endDate: "\(datePicker.date)", images: images, isCompleted: false)
         
-        print(task.toString())
-        self.addToTaskList?(task)
+        if task == nil {
+            task = Task(id: "123", title: title, category: selectedCategory, createDate: "\(Date())", endDate: "\(datePicker.date)", images: images, isCompleted: false)
+            
+            print(task.toString())
+            self.addToTaskList?(task)
+        } else {
+            
+        }
+        
         
         
         self.navigationController?.popViewController(animated: true)
@@ -113,7 +137,7 @@ extension AddEditViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueCell(for: indexPath)
-
+        
         if images.count != indexPath.row {
             //not a last index
             cell.image = images[indexPath.row]

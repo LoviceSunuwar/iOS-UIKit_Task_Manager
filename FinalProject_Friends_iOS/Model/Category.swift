@@ -9,9 +9,11 @@ import Foundation
 class Category {
     var id: Int
     var title: String
+    var icon: String
     
-    init(id:Int, title:String){
+    init(id:Int, title:String, icon:String){
         self.id = id
         self.title = title
+        self.icon = icon
     }
 }
