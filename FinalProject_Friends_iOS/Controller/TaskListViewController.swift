@@ -9,7 +9,7 @@ import UIKit
 
 class TaskListViewController: UIViewController {
     
-    var taskList = [Task(id: "1", title: "Test 1", category: Category(id: 1, title: "School", icon: "book.fill"), createDate: "2022-01-19 21:23:34 +0000", endDate: "2022-01-19 21:23:34 +0000", images: [], isCompleted: false)]
+    var taskList = [Task(id: "1", title: "Test 1", category: Category(id: 1, title: "School", icon: "book.fill"), createDate: "2022-01-19 21:23:34 +0000", endDate: "2022-01-19 21:23:34 +0000", images: [], isCompleted: false, audio: [])]
     
     @IBOutlet weak var taskListTV: UITableView!
     

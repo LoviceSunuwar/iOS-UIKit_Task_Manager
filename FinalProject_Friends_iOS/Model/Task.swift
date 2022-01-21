@@ -13,6 +13,7 @@ class Task {
     var createDate:String
     var endDate: String
     var images: [Data]
+    var audio: [String]
     var isCompleted: Bool
     
     init( id: String,
@@ -21,7 +22,8 @@ class Task {
           createDate:String,
           endDate: String,
           images: [Data],
-          isCompleted: Bool
+          isCompleted: Bool,
+          audio: [String]
     ){
         self.id = id
         self.title = title
@@ -30,6 +32,7 @@ class Task {
         self.endDate = endDate
         self.images = images
         self.isCompleted = isCompleted
+        self.audio = audio
     }
     
     func toString() -> String {

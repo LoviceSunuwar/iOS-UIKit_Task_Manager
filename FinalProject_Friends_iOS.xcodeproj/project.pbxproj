@@ -18,6 +18,7 @@
 		5B5A97512798733500759F8D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A97502798733500759F8D /* ImagePicker.swift */; };
 		5B5A975327987CC000759F8D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A975227987CC000759F8D /* TaskTableViewCell.swift */; };
 		5B5A975527987FCE00759F8D /* CommonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A975427987FCE00759F8D /* CommonExtension.swift */; };
+		5BA84E8D279A7A8B00252F38 /* AudioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA84E8C279A7A8B00252F38 /* AudioTableViewCell.swift */; };
 		5BC06E14278E6B99003FD541 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC06E13278E6B99003FD541 /* AppDelegate.swift */; };
 		5BC06E18278E6B99003FD541 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC06E17278E6B99003FD541 /* ViewController.swift */; };
 		5BC06E1B278E6B99003FD541 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC06E19278E6B99003FD541 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		5B5A97502798733500759F8D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5B5A975227987CC000759F8D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		5B5A975427987FCE00759F8D /* CommonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtension.swift; sourceTree = "<group>"; };
+		5BA84E8C279A7A8B00252F38 /* AudioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTableViewCell.swift; sourceTree = "<group>"; };
 		5BC06E10278E6B99003FD541 /* FinalProject_Friends_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject_Friends_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC06E13278E6B99003FD541 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BC06E17278E6B99003FD541 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				5BC06E17278E6B99003FD541 /* ViewController.swift */,
 				5B5A97442797D9B700759F8D /* AddEditViewController.swift */,
 				5B5A975227987CC000759F8D /* TaskTableViewCell.swift */,
+				5BA84E8C279A7A8B00252F38 /* AudioTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				5B5A974A2797E75D00759F8D /* Category.swift in Sources */,
 				5B5A974D2797E94600759F8D /* ImageCollectionViewCell.swift in Sources */,
 				5B5A97512798733500759F8D /* ImagePicker.swift in Sources */,
+				5BA84E8D279A7A8B00252F38 /* AudioTableViewCell.swift in Sources */,
 				5B5A975327987CC000759F8D /* TaskTableViewCell.swift in Sources */,
 				5B57CBD72794FFA300E5FE86 /* User.swift in Sources */,
 				5BC06E14278E6B99003FD541 /* AppDelegate.swift in Sources */,
