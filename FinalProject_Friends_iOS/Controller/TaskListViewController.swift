@@ -9,11 +9,11 @@ import UIKit
 
 class TaskListViewController: UIViewController {
     
-    var taskList = [Task(id: "1", title: "Test 1", category: Category(id: 1, title: "School", icon: "book.fill"), createDate: "2022-01-19 21:23:34 +0000", endDate: "2022-01-19 21:23:34 +0000", images: [], isCompleted: false, audio: [])]
+    var taskList = [Task]()
     
     var isSearching = false
     var searchController: UISearchController!
-    var searchTasks: [Task] = []
+    var searchTasks = [Task]()
     
     @IBOutlet weak var taskListTV: UITableView!
     
@@ -72,7 +72,7 @@ extension TaskListViewController: UISearchBarDelegate {
         }
         isSearching = true
         searchTasks = taskList.filter({ (temp) -> Bool in
-            let title: String = temp.title.lowercased()
+            let title: String = temp.title!.lowercased()
             let category: String = temp.category.title.lowercased()
             return title.contains(searchText.lowercased()) || category.contains(searchText.lowercased())
         })
