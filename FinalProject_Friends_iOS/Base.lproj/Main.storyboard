@@ -340,10 +340,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNw-27-kis">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="827"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="949.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="v7n-NU-N8B">
-                                                <rect key="frame" x="16" y="16" width="382" height="795"/>
+                                                <rect key="frame" x="16" y="16" width="382" height="917.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eV9-Hr-GzI">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
@@ -438,16 +438,16 @@
                                                         </constraints>
                                                     </pickerView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r0A-OO-UpT">
-                                                        <rect key="frame" x="0.0" y="425" width="382" height="41.5"/>
+                                                        <rect key="frame" x="0.0" y="425" width="382" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Audio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-Yr-rXL">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320.5" height="41.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghc-5B-hLy">
-                                                                <rect key="frame" x="340.5" y="0.0" width="41.5" height="41.5"/>
+                                                                <rect key="frame" x="340" y="0.0" width="42" height="42"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="ghc-5B-hLy" secondAttribute="height" multiplier="1:1" id="p9w-ea-QRY"/>
                                                                 </constraints>
@@ -459,9 +459,50 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="42" id="IzR-Rm-3Jh"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7oB-QI-pQk">
+                                                        <rect key="frame" x="0.0" y="487" width="382" height="102"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Audio Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zlb-WP-wdU">
+                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gOP-36-0jV">
+                                                                <rect key="frame" x="0.0" y="54" width="382" height="48"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4z-Hh-Fdp">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="48"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="tinted" title="Start Recording"/>
+                                                                        <connections>
+                                                                            <action selector="recordingHandler:" destination="bal-kV-cbV" eventType="touchUpInside" id="BWB-yT-F0r"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psE-gE-mEQ">
+                                                                        <rect key="frame" x="134" y="0.0" width="114" height="48"/>
+                                                                        <color key="tintColor" red="0.3723154152" green="0.76942896839999997" blue="0.26777652569999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="tinted" title="Save"/>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCv-BO-wP4">
+                                                                        <rect key="frame" x="268" y="0.0" width="114" height="48"/>
+                                                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                                                        <connections>
+                                                                            <action selector="addAudio:" destination="bal-kV-cbV" eventType="touchUpInside" id="enQ-Dq-0KZ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
                                                     </stackView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eeo-cl-JQb">
-                                                        <rect key="frame" x="0.0" y="486.5" width="382" height="188"/>
+                                                        <rect key="frame" x="0.0" y="609" width="382" height="188"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="69" id="WJb-AP-TOJ" customClass="AudioTableViewCell" customModule="FinalProject_Friends_iOS" customModuleProvider="target">
@@ -471,28 +512,28 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="69"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="93" translatesAutoresizingMaskIntoConstraints="NO" id="ObE-xE-zHo">
-                                                                            <rect key="frame" x="20" y="11" width="290" height="41.5"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="93" translatesAutoresizingMaskIntoConstraints="NO" id="ObE-xE-zHo">
+                                                                            <rect key="frame" x="36" y="16" width="310" height="37"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-3e-Grd">
-                                                                                    <rect key="frame" x="0.0" y="10.5" width="93" height="20.5"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Audio Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-3e-Grd">
+                                                                                    <rect key="frame" x="0.0" y="8.5" width="93" height="20.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="qVl-9g-oEx">
-                                                                                    <rect key="frame" x="186" y="0.0" width="104" height="41.5"/>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="qVl-9g-oEx">
+                                                                                    <rect key="frame" x="186" y="0.0" width="124" height="37"/>
                                                                                     <subviews>
-                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPM-Zy-Wq7">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="41.5"/>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPM-Zy-Wq7">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" secondItem="UPM-Zy-Wq7" secondAttribute="height" multiplier="1:1" id="yBn-cb-tzc"/>
                                                                                             </constraints>
                                                                                             <state key="normal" title="Button"/>
                                                                                             <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
                                                                                         </button>
-                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3p-ru-Ti4">
-                                                                                            <rect key="frame" x="62.5" y="0.0" width="41.5" height="41.5"/>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3p-ru-Ti4">
+                                                                                            <rect key="frame" x="87" y="0.0" width="37" height="37"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" secondItem="r3p-ru-Ti4" secondAttribute="height" multiplier="1:1" id="p4E-4X-7G0"/>
                                                                                             </constraints>
@@ -505,21 +546,25 @@
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>
+                                                                        <constraint firstItem="ObE-xE-zHo" firstAttribute="top" secondItem="hww-5p-zJR" secondAttribute="topMargin" constant="5" id="2Jn-C0-AUm"/>
                                                                         <constraint firstItem="ObE-xE-zHo" firstAttribute="centerY" secondItem="hww-5p-zJR" secondAttribute="centerY" id="Dm8-MI-R8C"/>
+                                                                        <constraint firstItem="ObE-xE-zHo" firstAttribute="leading" secondItem="hww-5p-zJR" secondAttribute="leadingMargin" constant="16" id="Mmm-66-gA2"/>
                                                                         <constraint firstItem="ObE-xE-zHo" firstAttribute="centerX" secondItem="hww-5p-zJR" secondAttribute="centerX" id="OZc-3A-cfO"/>
+                                                                        <constraint firstAttribute="trailingMargin" secondItem="ObE-xE-zHo" secondAttribute="trailing" constant="16" id="aHH-ff-V3l"/>
+                                                                        <constraint firstAttribute="bottomMargin" secondItem="ObE-xE-zHo" secondAttribute="bottom" constant="5" id="jic-2b-9sO"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
                                                         </prototypes>
                                                     </tableView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-YV-G3N">
-                                                        <rect key="frame" x="0.0" y="694.5" width="382" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="817" width="382" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hIf-7H-uyT">
-                                                        <rect key="frame" x="0.0" y="735" width="382" height="60"/>
+                                                        <rect key="frame" x="0.0" y="857.5" width="382" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Z9z-3z-er0"/>
                                                         </constraints>
@@ -574,11 +619,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addAudioButton" destination="ghc-5B-hLy" id="OJ2-hl-Jkf"/>
+                        <outlet property="addAudioSection" destination="7oB-QI-pQk" id="Lsk-Tb-fpu"/>
                         <outlet property="audioTV" destination="eeo-cl-JQb" id="XHu-eb-FjQ"/>
+                        <outlet property="cancelAudioButton" destination="iCv-BO-wP4" id="v32-GZ-QZ3"/>
                         <outlet property="collectionView" destination="qQT-D0-0xL" id="EhE-aZ-WrA"/>
                         <outlet property="createButton" destination="wqK-qW-SmG" id="8Z4-Kb-yKk"/>
                         <outlet property="datePicker" destination="hIf-7H-uyT" id="U7V-sy-oTM"/>
+                        <outlet property="newAudioName" destination="Zlb-WP-wdU" id="iGi-OG-KJ8"/>
                         <outlet property="pickerView" destination="weS-wK-uML" id="LQm-q1-DXs"/>
+                        <outlet property="recordingButton" destination="D4z-Hh-Fdp" id="kbr-bS-xDc"/>
+                        <outlet property="saveAudioButton" destination="psE-gE-mEQ" id="xox-dE-cnb"/>
                         <outlet property="taskTitleTextField" destination="7Fo-VZ-3se" id="RcL-Fv-5Xm"/>
                     </connections>
                 </viewController>

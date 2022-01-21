@@ -15,6 +15,13 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var audioTV: UITableView!
+    @IBOutlet weak var addAudioSection: UIStackView!
+    @IBOutlet weak var addAudioButton: UIButton!
+    @IBOutlet weak var recordingButton: UIButton!
+    @IBOutlet weak var saveAudioButton: UIButton!
+    @IBOutlet weak var cancelAudioButton: UIButton!
+    @IBOutlet weak var newAudioName: UITextField!
+    
     
     var category: [Category] =  [Category(id: 0, title: "Work", icon: "suitcase.fill"), Category(id: 1, title: "School", icon: "book.fill"), Category(id: 2, title: "Shopping",icon: "bag.fill"), Category(id: 3, title: "Groceries", icon: "cart.fill") ]
     var selectedCategory: Category!
@@ -27,11 +34,14 @@ class AddEditViewController: UIViewController {
     
     var addToTaskList:((Task)->())?
     
+    var audio = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         audioTV.isHidden = true
+        addAudioSection.isHidden = true
         selectedCategory = category[0]
         setupPickerView()
         setupCollectionView()
@@ -105,8 +115,25 @@ class AddEditViewController: UIViewController {
     }
     
     @IBAction func addAudio(_ sender: UIButton) {
-        
+        addAudioSection.isHidden = sender != addAudioButton
+        addAudioButton.isHidden = sender == addAudioButton
+        saveAudioButton.isHidden = sender == addAudioButton
+        if sender == addAudioButton {
+            newAudioName.text = "Audio " + String(audio.count + 1)
+        }
     }
+    
+    @IBAction func recordingHandler(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Start Recording" {
+            sender.setTitle("Stop", for: .normal)
+            sender.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+        } else {
+            sender.setImage(nil, for: .normal)
+            sender.setTitle("Start Recording", for: .normal)
+           
+        }
+    }
+    
     
     
 }
@@ -212,11 +239,11 @@ extension AddEditViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension UICollectionView {
-    
+
     func dequeueCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         return dequeueReusableCell(withReuseIdentifier: "\(T.self)", for: indexPath) as! T
     }
-    
+
 }
 // For Collection View END
 
