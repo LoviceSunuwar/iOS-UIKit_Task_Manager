@@ -9,7 +9,7 @@ import UIKit
 
 class TaskListViewController: UIViewController {
     
-    var taskList = [Task(id: "123", title: "Test 1", category: Category(id: 1, title: "School", icon: "book.fill"), createDate: "2022-01-19 21:23:34 +0000", endDate: "2022-01-19 21:23:34 +0000", images: [], isCompleted: false)]
+    var taskList = [Task(id: "1", title: "Test 1", category: Category(id: 1, title: "School", icon: "book.fill"), createDate: "2022-01-19 21:23:34 +0000", endDate: "2022-01-19 21:23:34 +0000", images: [], isCompleted: false)]
     
     @IBOutlet weak var taskListTV: UITableView!
     
@@ -71,15 +71,20 @@ extension TaskListViewController: UITableViewDataSource {
         let task = taskList[indexPath.row]
         let delete = UIContextualAction(style: .destructive, title: "") { [weak self] (action, view, completionHandler) in
             guard let self = self else { return }
-            self.alert(message: "Are you sure you want to delete Task", title: "Alert", okAction: {
-                self.taskList.remove(at: indexPath.row)
-            })
+            let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to delete Task", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+                    self.taskList.remove(at: indexPath.row)
+                    self.taskListTV.reloadData()
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
         
         let update = UIContextualAction(style: .normal, title: "") { [weak self] (action, view, completionHandler) in
             guard let self = self else { return }
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEditViewController") as! AddEditViewController
             vc.task = task
+            vc.taskList = self.taskList
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

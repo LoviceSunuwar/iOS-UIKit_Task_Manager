@@ -19,6 +19,7 @@ class AddEditViewController: UIViewController {
     var selectedCategory: Category!
     
     var task: Task! = nil
+    var taskList = [Task]()
     
     var images: [Data] = []
     var imagePicker: ImagePicker?
@@ -77,12 +78,14 @@ class AddEditViewController: UIViewController {
         }
         
         if task == nil {
-            task = Task(id: "123", title: title, category: selectedCategory, createDate: "\(Date())", endDate: "\(datePicker.date)", images: images, isCompleted: false)
-            
-            print(task.toString())
+            let id = taskList.count > 0 ? Int(taskList.last!.id)! + 1 : 1
+            task = Task(id: "\(id)", title: title, category: selectedCategory, createDate: "\(Date())", endDate: "\(datePicker.date)", images: images, isCompleted: false)
             self.addToTaskList?(task)
         } else {
-            
+            task.title = title
+            task.category = selectedCategory
+            task.endDate = "\(datePicker.date)"
+            task.images = images
         }
         
         

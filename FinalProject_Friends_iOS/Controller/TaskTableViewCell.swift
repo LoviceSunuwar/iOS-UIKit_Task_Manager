@@ -24,7 +24,7 @@ class TaskTableViewCell: UITableViewCell {
     func setCell(obj: Task){
         isCompleted.isSelected = obj.isCompleted
         taskTitle.text = obj.title
-        categoryIcon.image = UIImage(named: obj.category.icon)
+        categoryIcon.image = UIImage(systemName: obj.category.icon)
         let date = obj.endDate.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss Z")
         let dateString = date?.toFormattedDate()
         dueDate.text = dateString
