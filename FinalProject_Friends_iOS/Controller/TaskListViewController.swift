@@ -9,7 +9,11 @@ import UIKit
 
 class TaskListViewController: UIViewController {
     
-    var taskList = [Task(id: "123", title: "Test 1", category: Category(id: 1, title: "School", icon: "book.fill"), createDate: "2022-01-19 21:23:34 +0000", endDate: "2022-01-19 21:23:34 +0000", images: [], isCompleted: false)]
+    var taskList = [Task(id: "1", title: "Test 1", category: Category(id: 1, title: "School", icon: "book.fill"), createDate: "2022-01-19 21:23:34 +0000", endDate: "2022-01-19 21:23:34 +0000", images: [], isCompleted: false, audio: [])]
+    
+    var isSearching = false
+    var searchController: UISearchController!
+    var searchTasks: [Task] = []
     
     @IBOutlet weak var taskListTV: UITableView!
     
@@ -17,6 +21,7 @@ class TaskListViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         // Do any additional setup after loading the view.
+        navigationBarSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,15 +51,57 @@ class TaskListViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func navigationBarSetup() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.searchBar.barStyle = .default
+        searchController.searchBar.placeholder = "Search task"
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
+    }
+    
+}
+
+extension TaskListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            isSearching = false
+            searchTasks = []
+            taskListTV.reloadData()
+            return
+        }
+        isSearching = true
+        searchTasks = taskList.filter({ (temp) -> Bool in
+            let title: String = temp.title.lowercased()
+            let category: String = temp.category.title.lowercased()
+            return title.contains(searchText.lowercased()) || category.contains(searchText.lowercased())
+        })
+        taskListTV.reloadData()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        taskListTV.reloadData()
+    }
+    
+    
 }
 
 extension TaskListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.count
+        if isSearching {
+            return searchTasks.count
+        } else {
+            return taskList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let obj = taskList[indexPath.row]
+        let obj = isSearching ? searchTasks[indexPath.row] : taskList[indexPath.row]
         let cell = taskListTV.dequeueReusableCell(withIdentifier: "task", for: indexPath) as! TaskTableViewCell
         cell.setCell(obj: obj)
         
@@ -71,15 +118,20 @@ extension TaskListViewController: UITableViewDataSource {
         let task = taskList[indexPath.row]
         let delete = UIContextualAction(style: .destructive, title: "") { [weak self] (action, view, completionHandler) in
             guard let self = self else { return }
-            self.alert(message: "Are you sure you want to delete Task", title: "Alert", okAction: {
-                self.taskList.remove(at: indexPath.row)
-            })
+            let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to delete Task", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+                    self.taskList.remove(at: indexPath.row)
+                    self.taskListTV.reloadData()
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
         
         let update = UIContextualAction(style: .normal, title: "") { [weak self] (action, view, completionHandler) in
             guard let self = self else { return }
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEditViewController") as! AddEditViewController
             vc.task = task
+            vc.taskList = self.taskList
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

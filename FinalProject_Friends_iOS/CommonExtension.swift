@@ -24,10 +24,10 @@ extension Date {
         formatter.dateStyle = .long
         formatter.locale = Locale(identifier: "en_US")
         
-        formatter.dateFormat = "EEEE, d MMMM yyyy"
+        formatter.dateFormat = "EEE, dd MMM yyyy"
         let dateString = formatter.string(from: self)
         
-        formatter.dateFormat = "HH:mm a"
+        formatter.dateFormat = "hh:mm a"
         let timeString = formatter.string(from: self)
         
         let orderDateString = "\(dateString) at \(timeString)"

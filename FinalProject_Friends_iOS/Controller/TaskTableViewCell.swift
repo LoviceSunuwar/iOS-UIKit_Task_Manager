@@ -24,10 +24,16 @@ class TaskTableViewCell: UITableViewCell {
     func setCell(obj: Task){
         isCompleted.isSelected = obj.isCompleted
         taskTitle.text = obj.title
-        categoryIcon.image = UIImage(named: obj.category.icon)
-        let date = obj.endDate.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss Z")
-        let dateString = date?.toFormattedDate()
-        dueDate.text = dateString
+        categoryIcon.image = UIImage(systemName: obj.category.icon)
+        if obj.isCompleted {
+            dueDate.textColor = UIColor.systemGreen
+            dueDate.text = "Completed"
+        } else {
+            dueDate.textColor = UIColor.systemRed
+            let date = obj.endDate.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss Z")
+            let dateString = date?.toFormattedDate()
+            dueDate.text = "Due Date: " + dateString!
+        }
     }
     
     @IBAction func isCompletedHandler(_ sender: UIButton) {

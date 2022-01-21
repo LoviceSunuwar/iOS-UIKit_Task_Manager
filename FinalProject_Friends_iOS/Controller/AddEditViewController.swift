@@ -14,11 +14,13 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var audioTV: UITableView!
     
     var category: [Category] =  [Category(id: 0, title: "Work", icon: "suitcase.fill"), Category(id: 1, title: "School", icon: "book.fill"), Category(id: 2, title: "Shopping",icon: "bag.fill"), Category(id: 3, title: "Groceries", icon: "cart.fill") ]
     var selectedCategory: Category!
     
     var task: Task! = nil
+    var taskList = [Task]()
     
     var images: [Data] = []
     var imagePicker: ImagePicker?
@@ -29,6 +31,7 @@ class AddEditViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        audioTV.isHidden = true
         selectedCategory = category[0]
         setupPickerView()
         setupCollectionView()
@@ -48,6 +51,7 @@ class AddEditViewController: UIViewController {
             createButton.setTitle("Update", for: .normal)
             datePicker.date = task.endDate.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss Z") ?? Date()
             self.title = "Update Task"
+            audioTV.isHidden = task.audio.count == 0
         } else {
             createButton.setTitle("Create", for: .normal)
             self.title = "Add Task"
@@ -77,12 +81,14 @@ class AddEditViewController: UIViewController {
         }
         
         if task == nil {
-            task = Task(id: "123", title: title, category: selectedCategory, createDate: "\(Date())", endDate: "\(datePicker.date)", images: images, isCompleted: false)
-            
-            print(task.toString())
+            let id = taskList.count > 0 ? Int(taskList.last!.id)! + 1 : 1
+            task = Task(id: "\(id)", title: title, category: selectedCategory, createDate: "\(Date())", endDate: "\(datePicker.date)", images: images, isCompleted: false, audio: [])
             self.addToTaskList?(task)
         } else {
-            
+            task.title = title
+            task.category = selectedCategory
+            task.endDate = "\(datePicker.date)"
+            task.images = images
         }
         
         
@@ -98,6 +104,9 @@ class AddEditViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func addAudio(_ sender: UIButton) {
+        
+    }
     
     
 }
