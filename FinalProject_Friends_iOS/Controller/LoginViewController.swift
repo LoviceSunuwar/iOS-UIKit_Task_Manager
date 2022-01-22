@@ -6,30 +6,35 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    var userNames = [User(fullName: "User", email: "test@email.com", phone: "1234456788", password: "1234", username: "user")]; // will be replaced by db later
+    var userNames = [User]()
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        loadUsers()
+    }
+    
+    //MARK: Core Data Methods
+    private func loadUsers(){
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        do {
+            userNames = try context.fetch(request)
+        } catch {
+            print("Error loading user ", error.localizedDescription)
+        }
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: UIButton
     @IBAction func login(_ sender: UIButton) {
         let name = username.text
         let pw = password.text

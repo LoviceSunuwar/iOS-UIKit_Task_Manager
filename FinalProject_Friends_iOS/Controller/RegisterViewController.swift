@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RegisterViewController: UIViewController {
     
@@ -17,6 +18,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var username: UITextField!
     
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,22 +28,21 @@ class RegisterViewController: UIViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+   // MARK: UIButton
     @IBAction func register(_ sender: UIButton) {
         
-        if !fullName.text!.isEmpty && !email.text!.isEmpty && !phone.text!.isEmpty && !password.text!.isEmpty && !confirmPassword.text!.isEmpty {
+        if !fullName.text!.isEmpty && !email.text!.isEmpty && !phone.text!.isEmpty && !password.text!.isEmpty && !confirmPassword.text!.isEmpty && !username.text!.isEmpty {
             
             // check is password and confirm password is same
             if password.text == confirmPassword.text {
                 // add function to store user data in database
+                let newUser = User(context: self.context)
+                newUser.fullName = fullName.text
+                newUser.email = email.text
+                newUser.phone = phone.text
+                newUser.password = password.text
+                newUser.username = username.text
+                appDelegate.saveContext()
                 
                 // store username and password to check if user has logged in later
                 let defaults = UserDefaults.standard

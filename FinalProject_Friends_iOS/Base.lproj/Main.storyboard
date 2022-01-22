@@ -313,12 +313,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Task Manager" id="eOm-Ya-MKI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iIN-3t-IWW">
-                            <color key="tintColor" red="0.026589119969999998" green="0.29887035680000001" blue="0.75489267680000005" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="addTaskHandler:" destination="Lj3-Wl-kYr" id="ZU9-Ly-NMz"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="rectangle.portrait.and.arrow.right.fill" catalog="system" style="plain" id="K49-7B-JH6">
+                                <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="logout:" destination="Lj3-Wl-kYr" id="GeC-gm-cd5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="iIN-3t-IWW">
+                                <color key="tintColor" red="0.026589119969999998" green="0.29887035680000001" blue="0.75489267680000005" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="addTaskHandler:" destination="Lj3-Wl-kYr" id="ZU9-Ly-NMz"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="taskListTV" destination="Ydd-4r-PS4" id="Ece-Ek-S4c"/>
@@ -512,19 +520,19 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="69"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="93" translatesAutoresizingMaskIntoConstraints="NO" id="ObE-xE-zHo">
-                                                                            <rect key="frame" x="36" y="16" width="310" height="37"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ObE-xE-zHo">
+                                                                            <rect key="frame" x="25" y="16" width="332" height="37"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Audio Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-3e-Grd">
-                                                                                    <rect key="frame" x="0.0" y="8.5" width="93" height="20.5"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-3e-Grd">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="93" height="37"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="qVl-9g-oEx">
-                                                                                    <rect key="frame" x="186" y="0.0" width="124" height="37"/>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qVl-9g-oEx">
+                                                                                    <rect key="frame" x="248" y="0.0" width="84" height="37"/>
                                                                                     <subviews>
-                                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPM-Zy-Wq7">
+                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPM-Zy-Wq7">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" secondItem="UPM-Zy-Wq7" secondAttribute="height" multiplier="1:1" id="yBn-cb-tzc"/>
@@ -532,8 +540,8 @@
                                                                                             <state key="normal" title="Button"/>
                                                                                             <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
                                                                                         </button>
-                                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3p-ru-Ti4">
-                                                                                            <rect key="frame" x="87" y="0.0" width="37" height="37"/>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3p-ru-Ti4">
+                                                                                            <rect key="frame" x="47" y="0.0" width="37" height="37"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" secondItem="r3p-ru-Ti4" secondAttribute="height" multiplier="1:1" id="p4E-4X-7G0"/>
                                                                                             </constraints>
@@ -546,12 +554,10 @@
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="ObE-xE-zHo" firstAttribute="top" secondItem="hww-5p-zJR" secondAttribute="topMargin" constant="5" id="2Jn-C0-AUm"/>
-                                                                        <constraint firstItem="ObE-xE-zHo" firstAttribute="centerY" secondItem="hww-5p-zJR" secondAttribute="centerY" id="Dm8-MI-R8C"/>
-                                                                        <constraint firstItem="ObE-xE-zHo" firstAttribute="leading" secondItem="hww-5p-zJR" secondAttribute="leadingMargin" constant="16" id="Mmm-66-gA2"/>
-                                                                        <constraint firstItem="ObE-xE-zHo" firstAttribute="centerX" secondItem="hww-5p-zJR" secondAttribute="centerX" id="OZc-3A-cfO"/>
-                                                                        <constraint firstAttribute="trailingMargin" secondItem="ObE-xE-zHo" secondAttribute="trailing" constant="16" id="aHH-ff-V3l"/>
-                                                                        <constraint firstAttribute="bottomMargin" secondItem="ObE-xE-zHo" secondAttribute="bottom" constant="5" id="jic-2b-9sO"/>
+                                                                        <constraint firstItem="ObE-xE-zHo" firstAttribute="leading" secondItem="hww-5p-zJR" secondAttribute="leadingMargin" constant="5" id="C2b-77-Coi"/>
+                                                                        <constraint firstAttribute="trailingMargin" secondItem="ObE-xE-zHo" secondAttribute="trailing" constant="5" id="VCT-Gx-SDw"/>
+                                                                        <constraint firstItem="ObE-xE-zHo" firstAttribute="top" secondItem="hww-5p-zJR" secondAttribute="topMargin" constant="5" id="gGy-Cb-0ho"/>
+                                                                        <constraint firstAttribute="bottomMargin" secondItem="ObE-xE-zHo" secondAttribute="bottom" constant="5" id="pyR-M4-tfO"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
@@ -906,6 +912,7 @@
                         <outlet property="fullName" destination="y83-6d-Gn1" id="OwZ-pE-ZHB"/>
                         <outlet property="password" destination="1wO-jP-XFD" id="d6n-bT-Sj5"/>
                         <outlet property="phone" destination="xcF-6Z-sez" id="etF-zi-YHI"/>
+                        <outlet property="username" destination="HpT-60-URg" id="iej-hp-56g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgH-E8-VSA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -939,6 +946,7 @@
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="radio_deselection" width="24" height="24"/>
+        <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
         <image name="stop.fill" catalog="system" width="128" height="113"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
