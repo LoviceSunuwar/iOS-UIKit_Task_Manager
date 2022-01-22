@@ -9,11 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B57CBD32794FF5200E5FE86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD22794FF5200E5FE86 /* LoginViewController.swift */; };
 		5B57CBD52794FF8B00E5FE86 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD42794FF8B00E5FE86 /* TaskListViewController.swift */; };
-		5B57CBD72794FFA300E5FE86 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD62794FFA300E5FE86 /* User.swift */; };
 		5B57CBD92795046D00E5FE86 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD82795046D00E5FE86 /* RegisterViewController.swift */; };
 		5B5A97452797D9B700759F8D /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A97442797D9B700759F8D /* AddEditViewController.swift */; };
-		5B5A97482797DBC600759F8D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A97472797DBC600759F8D /* Task.swift */; };
-		5B5A974A2797E75D00759F8D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A97492797E75D00759F8D /* Category.swift */; };
 		5B5A974D2797E94600759F8D /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A974C2797E94600759F8D /* ImageCollectionViewCell.swift */; };
 		5B5A97512798733500759F8D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A97502798733500759F8D /* ImagePicker.swift */; };
 		5B5A975327987CC000759F8D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A975227987CC000759F8D /* TaskTableViewCell.swift */; };
@@ -30,11 +27,8 @@
 /* Begin PBXFileReference section */
 		5B57CBD22794FF5200E5FE86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5B57CBD42794FF8B00E5FE86 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
-		5B57CBD62794FFA300E5FE86 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5B57CBD82795046D00E5FE86 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5B5A97442797D9B700759F8D /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
-		5B5A97472797DBC600759F8D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		5B5A97492797E75D00759F8D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5B5A974C2797E94600759F8D /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5A97502798733500759F8D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5B5A975227987CC000759F8D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -75,16 +69,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		5B5A97462797DBB200759F8D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				5B57CBD62794FFA300E5FE86 /* User.swift */,
-				5B5A97472797DBC600759F8D /* Task.swift */,
-				5B5A97492797E75D00759F8D /* Category.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		5B5A974B2797E92A00759F8D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +106,6 @@
 			children = (
 				5B5A974F2798732000759F8D /* Helper */,
 				5B5A974B2797E92A00759F8D /* View */,
-				5B5A97462797DBB200759F8D /* Model */,
 				5B57CBDA279517F700E5FE86 /* Controller */,
 				5BC06E13278E6B99003FD541 /* AppDelegate.swift */,
 				5BC06E19278E6B99003FD541 /* Main.storyboard */,
@@ -210,13 +193,10 @@
 				5B5A97452797D9B700759F8D /* AddEditViewController.swift in Sources */,
 				5BC06E18278E6B99003FD541 /* ViewController.swift in Sources */,
 				5B57CBD92795046D00E5FE86 /* RegisterViewController.swift in Sources */,
-				5B5A97482797DBC600759F8D /* Task.swift in Sources */,
-				5B5A974A2797E75D00759F8D /* Category.swift in Sources */,
 				5B5A974D2797E94600759F8D /* ImageCollectionViewCell.swift in Sources */,
 				5B5A97512798733500759F8D /* ImagePicker.swift in Sources */,
 				5BA84E8D279A7A8B00252F38 /* AudioTableViewCell.swift in Sources */,
 				5B5A975327987CC000759F8D /* TaskTableViewCell.swift in Sources */,
-				5B57CBD72794FFA300E5FE86 /* User.swift in Sources */,
 				5BC06E14278E6B99003FD541 /* AppDelegate.swift in Sources */,
 				5BBCBEED279B488D00065BF4 /* TaskManager.xcdatamodeld in Sources */,
 				5B5A975527987FCE00759F8D /* CommonExtension.swift in Sources */,

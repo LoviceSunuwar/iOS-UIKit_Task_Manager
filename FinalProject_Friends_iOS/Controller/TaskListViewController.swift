@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import CoreData
 
 class TaskListViewController: UIViewController {
     
     var taskList = [Task]()
+    var searchTasks = [Task]()
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var isSearching = false
     var searchController: UISearchController!
-    var searchTasks = [Task]()
     
     @IBOutlet weak var taskListTV: UITableView!
     
@@ -22,6 +24,8 @@ class TaskListViewController: UIViewController {
         setupTableView()
         // Do any additional setup after loading the view.
         navigationBarSetup()
+        loadTasks()
+        loadCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,12 +38,6 @@ class TaskListViewController: UIViewController {
         navigationItem.title = ""
     }
     
-    func addToTaskList(task: Task){
-        taskList.append(task)
-        print("tasks", taskList.count)
-        taskListTV.reloadData()
-    }
-    
     func setupTableView() {
         self.taskListTV.dataSource = self
         self.taskListTV.delegate = self
@@ -47,7 +45,7 @@ class TaskListViewController: UIViewController {
     
     @IBAction func addTaskHandler(_ sender: UIBarButtonItem) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEditViewController") as! AddEditViewController
-        vc.addToTaskList = addToTaskList
+        vc.loadTask = loadTasks
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -58,6 +56,55 @@ class TaskListViewController: UIViewController {
         searchController.searchBar.placeholder = "Search task"
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
+    }
+    
+    @IBAction func logout(_ sender: UIBarButtonItem) {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "username")
+        defaults.removeObject(forKey: "password")
+        appDelegate.goToLoginPage()
+    }
+    
+    //MARK: Core Data Methods
+    private func loadTasks() {
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        do {
+            taskList = try context.fetch(request)
+            taskListTV.reloadData()
+        } catch {
+            print("Error loading tasks ",error.localizedDescription)
+        }
+    }
+    
+    private func deleteTask(task: Task){
+        context.delete(task)
+    }
+    
+    private func saveTask(){
+        appDelegate.saveContext()
+    }
+    
+    private func loadCategories(){
+        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        do {
+            let categoryList = try context.fetch(request)
+            if categoryList.count < 1 {
+                let defaultList = [
+                    ["title": "Work", "icon": "suitcase.fill"],
+                    ["title": "School", "icon": "book.fill"],
+                    ["title": "Shopping", "icon": "bag.fill"],
+                    ["title": "Groceries", "icon": "cart.fill"]
+                ]
+                for category in defaultList {
+                    let newCategory = Category(context: self.context)
+                    newCategory.title = category["title"]
+                    newCategory.icon = category["icon"]
+                    appDelegate.saveContext()
+                }
+            }
+        } catch {
+            print("Error loading tasks ",error.localizedDescription)
+        }
     }
     
 }
@@ -73,7 +120,7 @@ extension TaskListViewController: UISearchBarDelegate {
         isSearching = true
         searchTasks = taskList.filter({ (temp) -> Bool in
             let title: String = temp.title!.lowercased()
-            let category: String = temp.category.title.lowercased()
+            let category: String = (temp.category?.title?.lowercased())!
             return title.contains(searchText.lowercased()) || category.contains(searchText.lowercased())
         })
         taskListTV.reloadData()
@@ -91,6 +138,7 @@ extension TaskListViewController: UISearchBarDelegate {
     
 }
 
+//MARK: UITABLEVIEWDATASOURCE
 extension TaskListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
@@ -120,8 +168,10 @@ extension TaskListViewController: UITableViewDataSource {
             guard let self = self else { return }
             let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to delete Task", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
-                    self.taskList.remove(at: indexPath.row)
-                    self.taskListTV.reloadData()
+                self.deleteTask(task: self.taskList[indexPath.row])
+                self.saveTask()
+                self.taskList.remove(at: indexPath.row)
+                self.taskListTV.deleteRows(at: [indexPath], with: .fade)
             }))
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alertController, animated: true, completion: nil)
@@ -132,6 +182,7 @@ extension TaskListViewController: UITableViewDataSource {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEditViewController") as! AddEditViewController
             vc.task = task
             vc.taskList = self.taskList
+            vc.loadTask = self.loadTasks
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -158,8 +209,6 @@ extension TaskListViewController: UITableViewDataSource {
     }
     
 }
-
-
 
 //MARK: UITABLEVIEWDELEGATE
 extension TaskListViewController: UITableViewDelegate {

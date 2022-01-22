@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddEditViewController: UIViewController {
     
@@ -16,8 +17,10 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var audioTV: UITableView!
     
-    var category: [Category] =  [Category(id: 0, title: "Work", icon: "suitcase.fill"), Category(id: 1, title: "School", icon: "book.fill"), Category(id: 2, title: "Shopping",icon: "bag.fill"), Category(id: 3, title: "Groceries", icon: "cart.fill") ]
+    var category = [Category]()
     var selectedCategory: Category!
+    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var task: Task! = nil
     var taskList = [Task]()
@@ -25,12 +28,13 @@ class AddEditViewController: UIViewController {
     var images: [Data] = []
     var imagePicker: ImagePicker?
     
-    var addToTaskList:((Task)->())?
+    var loadTask:(()->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        loadCategory()
         audioTV.isHidden = true
         selectedCategory = category[0]
         setupPickerView()
@@ -46,12 +50,13 @@ class AddEditViewController: UIViewController {
     func setupData() {
         if task != nil {
             taskTitleTextField.text = task!.title
-            pickerView.selectRow(task.category.id, inComponent: 0, animated: true)
-            self.images = task.images
+            let categoryIndex = category.firstIndex(of: task.category!)!
+            pickerView.selectRow(categoryIndex, inComponent: 0, animated: true)
+            self.images = task.images!
             createButton.setTitle("Update", for: .normal)
-            datePicker.date = task.endDate.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss Z") ?? Date()
+            datePicker.date = task.endDate!.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss Z") ?? Date()
             self.title = "Update Task"
-            audioTV.isHidden = task.audio.count == 0
+//            audioTV.isHidden = task.audio!.count == 0
         } else {
             createButton.setTitle("Create", for: .normal)
             self.title = "Add Task"
@@ -81,17 +86,23 @@ class AddEditViewController: UIViewController {
         }
         
         if task == nil {
-            let id = taskList.count > 0 ? Int(taskList.last!.id)! + 1 : 1
-            task = Task(id: "\(id)", title: title, category: selectedCategory, createDate: "\(Date())", endDate: "\(datePicker.date)", images: images, isCompleted: false, audio: [])
-            self.addToTaskList?(task)
+            let newTask = Task(context: self.context)
+            newTask.title = title
+            newTask.category = selectedCategory
+            newTask.createdDate = "\(Date())"
+            newTask.endDate = "\(datePicker.date)"
+            newTask.images = images
+            newTask.isCompleted = false
+            appDelegate.saveContext()
+            self.loadTask?()
         } else {
             task.title = title
             task.category = selectedCategory
             task.endDate = "\(datePicker.date)"
             task.images = images
+            appDelegate.saveContext()
+            self.loadTask?()
         }
-        
-        
         
         self.navigationController?.popViewController(animated: true)
     }
@@ -108,10 +119,20 @@ class AddEditViewController: UIViewController {
         
     }
     
+    //MARK: Core Data Methods
+    private func loadCategory(){
+        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        do {
+            category = try context.fetch(request)
+        } catch {
+            print("Error loading category", error.localizedDescription)
+        }
+    }
+    
     
 }
 
-// For Picker View START
+// MARK: For Picker View START
 extension AddEditViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -138,7 +159,7 @@ extension AddEditViewController: UIPickerViewDelegate {
 }
 // For Picker View END
 
-// For Collection View START
+// MARK: For Collection View START
 extension AddEditViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count + 1
@@ -193,21 +214,23 @@ extension AddEditViewController: UICollectionViewDataSource {
 }
 
 extension AddEditViewController: UICollectionViewDelegateFlowLayout {
+    // Define size of the cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.frame.size.height
-        return CGSize(width: height, height: height)
+        return CGSize(width: height, height: height) // square cell
     }
     
+    // Padding for inner view in collection view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 16
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 16
     }
 }
 
