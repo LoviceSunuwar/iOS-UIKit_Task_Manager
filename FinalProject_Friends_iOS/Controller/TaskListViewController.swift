@@ -71,7 +71,12 @@ class TaskListViewController: UIViewController {
     private func loadTasks() {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         do {
-            taskList = try context.fetch(request)
+            let tasks = try context.fetch(request)
+            taskList = tasks.filter({ (task) -> Bool in
+                let defaults = UserDefaults.standard
+                let username = defaults.value(forKey: "username") as! String
+                return task.user?.username == username
+            })
             sortTask()
         } catch {
             print("Error loading tasks ",error.localizedDescription)

@@ -13,6 +13,7 @@
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="taskCategory" inverseEntity="Category"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
@@ -22,8 +23,8 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-27" positionY="246.8092041015625" width="128" height="74"/>
-        <element name="Task" positionX="-473.4944458007812" positionY="178.5926208496094" width="128" height="134"/>
+        <element name="Category" positionX="114.0086669921875" positionY="208.9840698242188" width="128" height="74"/>
+        <element name="Task" positionX="-473.4944458007812" positionY="178.5926208496094" width="128" height="163"/>
         <element name="User" positionX="-45" positionY="54" width="128" height="118"/>
     </elements>
 </model>

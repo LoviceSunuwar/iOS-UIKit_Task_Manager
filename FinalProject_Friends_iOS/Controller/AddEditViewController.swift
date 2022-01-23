@@ -28,7 +28,9 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     @IBOutlet weak var audioName: UILabel!
     @IBOutlet weak var playSavedAudio: UIButton!
     
+    var currentUser:User!
     
+    // For Audio Recorder and Player
     var audioRecorder: AVAudioRecorder!
     var audioPlayer : AVAudioPlayer!
     var meterTimer:Timer!
@@ -56,6 +58,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         
         // Do any additional setup after loading the view.
         loadCategory()
+        loadUsers()
         addAudioSection.isHidden = true
         displayAudio.isHidden = true
         setupPickerView()
@@ -120,6 +123,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             newTask.endDate = "\(datePicker.date)"
             newTask.images = images
             newTask.isCompleted = false
+            newTask.user = currentUser
             if recordingUrl != nil {
                 newTask.audio = recordingUrl.path
             }
@@ -247,6 +251,18 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             selectedCategory = category[0]
         } catch {
             print("Error loading category", error.localizedDescription)
+        }
+    }
+    
+    private func loadUsers(){
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        do {
+            let userNames = try context.fetch(request)
+            let defaults = UserDefaults.standard
+            let username = defaults.value(forKey: "username") as! String
+            currentUser = userNames.first(where: {$0.username == username})
+        } catch {
+            print("Error loading user ", error.localizedDescription)
         }
     }
     
