@@ -16,8 +16,11 @@ class TaskListViewController: UIViewController {
     
     var isSearching = false
     var searchController: UISearchController!
+    var isAsc = true
+    var lastContentOffset: CGFloat = 0
     
     @IBOutlet weak var taskListTV: UITableView!
+    @IBOutlet weak var sortButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +73,7 @@ class TaskListViewController: UIViewController {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         do {
             taskList = try context.fetch(request)
-            taskListTV.reloadData()
+            sortTask()
         } catch {
             print("Error loading tasks ",error.localizedDescription)
         }
@@ -107,8 +110,20 @@ class TaskListViewController: UIViewController {
         }
     }
     
+    @IBAction func sortTask(_ sender: UIButton) {
+        isAsc = !isAsc
+        sortButton.setImage(isAsc ? UIImage(systemName: "arrow.up") : UIImage(systemName: "arrow.down"), for: .normal)
+        sortTask()
+    }
+    
+    private func sortTask(){
+        taskList = taskList.sorted(by: {isAsc ? $0.title! < $1.title! : $0.title! > $1.title!})
+        taskListTV.reloadData()
+    }
 }
 
+
+// MARK: UISearchBarDelegate
 extension TaskListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
@@ -124,10 +139,6 @@ extension TaskListViewController: UISearchBarDelegate {
             return title.contains(searchText.lowercased()) || category.contains(searchText.lowercased())
         })
         taskListTV.reloadData()
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.view.endEditing(true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -155,6 +166,7 @@ extension TaskListViewController: UITableViewDataSource {
         
         cell.radioButtonTapped = {
             obj.isCompleted = !obj.isCompleted
+            appDelegate.saveContext()
             self.taskListTV.reloadData()
         }
         
@@ -215,4 +227,29 @@ extension TaskListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+}
+
+
+// MARK: Scroll
+extension TaskListViewController {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+        
+        // For Floating button fade when scroll
+        if lastContentOffset >= scrollView.contentOffset.y {
+            UIView.animate(withDuration: 0.25) { [weak self] in
+                self?.sortButton.alpha = 1
+            }
+        } else if lastContentOffset < scrollView.contentOffset.y {
+            UIView.animate(withDuration: 0.25) { [weak self] in
+                self?.sortButton.alpha = 0
+            }
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastContentOffset = scrollView.contentOffset.y
+    }
+    
 }
