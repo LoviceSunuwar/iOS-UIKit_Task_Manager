@@ -18,9 +18,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var username: UITextField!
     
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +33,7 @@ class RegisterViewController: UIViewController {
             // check is password and confirm password is same
             if password.text == confirmPassword.text {
                 // add function to store user data in database
-                let newUser = User(context: self.context)
+                let newUser = User(context: context)
                 newUser.fullName = fullName.text
                 newUser.email = email.text
                 newUser.phone = phone.text

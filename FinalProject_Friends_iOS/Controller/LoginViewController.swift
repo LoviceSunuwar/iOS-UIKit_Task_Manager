@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     var userNames = [User]()
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()

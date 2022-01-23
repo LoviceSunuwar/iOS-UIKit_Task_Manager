@@ -16,7 +16,6 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var audioTV: UITableView!
     @IBOutlet weak var addAudioSection: UIStackView!
     @IBOutlet weak var addAudioButton: UIButton!
     @IBOutlet weak var recordingButton: UIButton!
@@ -42,8 +41,6 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     var category = [Category]()
     var selectedCategory: Category!
     
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var task: Task! = nil
     var taskList = [Task]()
     
@@ -59,7 +56,6 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         
         // Do any additional setup after loading the view.
         loadCategory()
-        audioTV.isHidden = true
         addAudioSection.isHidden = true
         displayAudio.isHidden = true
         setupPickerView()
@@ -88,7 +84,6 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
                 audioName.text = "\(task.audio?.split(separator: "/").last)"
             }
             
-            //            audioTV.isHidden = task.audio!.count == 0
         } else {
             createButton.setTitle("Create", for: .normal)
             self.title = "Add Task"
@@ -118,7 +113,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         }
         
         if task == nil {
-            let newTask = Task(context: self.context)
+            let newTask = Task(context: context)
             newTask.title = title
             newTask.category = selectedCategory
             newTask.createdDate = "\(Date())"
@@ -128,6 +123,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             if recordingUrl != nil {
                 newTask.audio = recordingUrl.path
             }
+            
             appDelegate.saveContext()
             self.loadTask?()
         } else {

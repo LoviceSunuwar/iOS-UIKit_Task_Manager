@@ -3,7 +3,7 @@
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="taskCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="category" inverseEntity="Task"/>
+        <relationship name="taskCategory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="category" inverseEntity="Task"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="audio" optional="YES" attributeType="String"/>
@@ -22,8 +22,8 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-27" positionY="246.8092041015625" width="128" height="88"/>
-        <element name="Task" positionX="-424.2042236328125" positionY="84.96182250976562" width="128" height="134"/>
+        <element name="Category" positionX="-27" positionY="246.8092041015625" width="128" height="74"/>
+        <element name="Task" positionX="-473.4944458007812" positionY="178.5926208496094" width="128" height="134"/>
         <element name="User" positionX="-45" positionY="54" width="128" height="118"/>
     </elements>
 </model>

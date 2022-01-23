@@ -12,7 +12,6 @@ class TaskListViewController: UIViewController {
     
     var taskList = [Task]()
     var searchTasks = [Task]()
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var isSearching = false
     var searchController: UISearchController!
@@ -99,10 +98,10 @@ class TaskListViewController: UIViewController {
                     ["title": "Groceries", "icon": "cart.fill"]
                 ]
                 for category in defaultList {
-                    let newCategory = Category(context: self.context)
+                    let newCategory = Category(context: context)
                     newCategory.title = category["title"]
                     newCategory.icon = category["icon"]
-                    appDelegate.saveContext()
+                    self.saveTask()
                 }
             }
         } catch {
@@ -135,7 +134,7 @@ extension TaskListViewController: UISearchBarDelegate {
         isSearching = true
         searchTasks = taskList.filter({ (temp) -> Bool in
             let title: String = temp.title!.lowercased()
-            let category: String = (temp.category?.title?.lowercased())!
+            let category: String = (temp.category?.title?.lowercased()) ?? ""
             return title.contains(searchText.lowercased()) || category.contains(searchText.lowercased())
         })
         taskListTV.reloadData()
@@ -166,7 +165,7 @@ extension TaskListViewController: UITableViewDataSource {
         
         cell.radioButtonTapped = {
             obj.isCompleted = !obj.isCompleted
-            appDelegate.saveContext()
+            self.saveTask()
             self.taskListTV.reloadData()
         }
         
