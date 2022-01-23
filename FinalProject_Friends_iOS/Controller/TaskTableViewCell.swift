@@ -15,7 +15,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryIcon: UIImageView!
     
     var radioButtonTapped: (()->())?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,7 +24,10 @@ class TaskTableViewCell: UITableViewCell {
     func setCell(obj: Task){
         isCompleted.isSelected = obj.isCompleted
         taskTitle.text = obj.title
-        categoryIcon.image = UIImage(systemName: (obj.category?.icon)!)
+        if ((obj.category?.icon) != nil){
+            categoryIcon.image = UIImage(systemName: (obj.category?.icon)!)
+            
+        }
         if obj.isCompleted {
             dueDate.textColor = UIColor.systemGreen
             dueDate.text = "Completed"
