@@ -351,7 +351,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinalProject_Friends_iOS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App wants to take pictures of task";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App wants to record audio for tasks";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App wants to get pictures for task";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -380,7 +382,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinalProject_Friends_iOS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App wants to take pictures of task";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App wants to record audio for tasks";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App wants to get pictures for task";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
