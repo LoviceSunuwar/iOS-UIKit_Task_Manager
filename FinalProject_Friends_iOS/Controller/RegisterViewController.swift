@@ -44,8 +44,10 @@ class RegisterViewController: UIViewController {
         if !fullName.text!.isEmpty && !email.text!.isEmpty && !phone.text!.isEmpty && !password.text!.isEmpty && !confirmPassword.text!.isEmpty && !username.text!.isEmpty {
             
             let usernameExists = userNames.first(where: {$0.username?.lowercased() == username.text?.lowercased()})
+            let emailValid = isValidEmail(email.text!)
+            let phoneValid = phone.text?.count == 10
             
-            if usernameExists == nil {
+            if usernameExists == nil && emailValid && phoneValid {
                 // check is password and confirm password is same
                 if password.text == confirmPassword.text {
                     // add function to store user data in database
@@ -69,7 +71,7 @@ class RegisterViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                 }
             } else {
-                let alertController = UIAlertController(title: "Invalid", message: "This username already exists. Please use another one.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Invalid", message: usernameExists != nil ? "This username already exists. Please use another one." : !phoneValid ? "Phone number must be 10 digits" :  "Email address not valid", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
             }
@@ -79,6 +81,13 @@ class RegisterViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
     
     
