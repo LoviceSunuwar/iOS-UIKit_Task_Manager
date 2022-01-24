@@ -546,6 +546,32 @@ extension AddEditViewController: UITableViewDataSource {
         
     }
     
+    // MARK: trailingSwipeActionsConfigurationForRowAt
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let subtask = subTaskList[indexPath.row]
+        let delete = UIContextualAction(style: .destructive, title: "") { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to delete subtask", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+                context.delete(subtask)
+                appDelegate.saveContext()
+                self.subTaskList.remove(at: indexPath.row)
+                self.subtaskTV.deleteRows(at: [indexPath], with: .fade)
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    
+        delete.image = UIGraphicsImageRenderer(size: CGSize(width: 25, height: 30)).image(actions: { (_) in
+            UIImage(named: "delete_white")?.draw(in: CGRect(x: 0, y: 0, width: 25, height: 25))
+        })
+        
+        delete.backgroundColor = .systemRed
+        
+        let configuration = UISwipeActionsConfiguration(actions: [delete])
+        return configuration
+    }
+    
     
 }
 
