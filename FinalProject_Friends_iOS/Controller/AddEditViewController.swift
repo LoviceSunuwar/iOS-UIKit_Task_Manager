@@ -60,6 +60,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         addAudioSection.isHidden = true
         displayAudio.isHidden = true
         setupCollectionView()
+        setupTableView()
         setupData()
     }
     
@@ -99,6 +100,11 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+    
+    func setupTableView() {
+        subtaskTV.dataSource = self
+        subtaskTV.delegate = self
     }
     
     func reloadCollectionView() {
@@ -464,4 +470,33 @@ extension UICollectionView {
 }
 // For Collection View END
 
+// MARK: UITableViewDelegate
+extension AddEditViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+}
+
+// MARK: UITableViewDataSource
+extension AddEditViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return subTaskList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let obj = subTaskList[indexPath.row]
+        let cell = subtaskTV.dequeueReusableCell(withIdentifier: "subtaskCell", for: indexPath) as! SubtaskTableViewCell
+        cell.setCell(obj: obj)
+        
+        cell.radioButtonTapped = {
+            obj.isCompleted = !obj.isCompleted
+            appDelegate.saveContext()
+            self.subtaskTV.reloadData()
+        }
+        
+        return cell
+    }
+    
+    
+}
 
