@@ -26,6 +26,8 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     @IBOutlet weak var displayAudio: UIStackView!
     @IBOutlet weak var audioName: UILabel!
     @IBOutlet weak var playSavedAudio: UIButton!
+    @IBOutlet weak var addSubTaskSection: UIStackView!
+    @IBOutlet weak var subtaskTV: UITableView!
     
     // For Audio Recorder and Player
     var audioRecorder: AVAudioRecorder!
@@ -39,6 +41,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     
     //    var category = [Category]()
     var selectedCategory: Category!
+    var subTaskList = [SubTask]()
     
     var task: Task! = nil
     var taskList = [Task]()
@@ -67,7 +70,9 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     
     func setupData() {
         if task != nil {
+            getSubTask()
             taskTitleTextField.text = task!.title
+            subtaskTV.isHidden = subTaskList.count < 1
             //            let categoryIndex = category.firstIndex(of: task.category!)!
             //            pickerView.selectRow(categoryIndex, inComponent: 0, animated: true)
             self.images = task.images!
@@ -84,6 +89,8 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         } else {
             createButton.setTitle("Create", for: .normal)
             self.title = "Add Task"
+            subtaskTV.isHidden = true
+            addSubTaskSection.isHidden = true
         }
         
         
@@ -133,6 +140,9 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         }
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func addSubTask(_ sender: UIButton) {
     }
     
     @IBAction func addAudio(_ sender: UIButton) {
@@ -234,6 +244,21 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             okAction?()
         }))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: Core Data Methods
+    func getSubTask(){
+        if task != nil {
+            let request: NSFetchRequest<SubTask> = SubTask.fetchRequest()
+            do {
+                let subTasks = try context.fetch(request)
+                subTaskList = subTasks.filter({ (task) -> Bool in
+                    return task.parentTask == self.task
+                })
+            } catch {
+                print("Error loading tasks ",error.localizedDescription)
+            }
+        }
     }
     
     // MARK: Audio Methods
