@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B4613E9279F0E38009E54DB /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4613E8279F0E38009E54DB /* SubtaskTableViewCell.swift */; };
 		5B57CBD32794FF5200E5FE86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD22794FF5200E5FE86 /* LoginViewController.swift */; };
 		5B57CBD52794FF8B00E5FE86 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD42794FF8B00E5FE86 /* TaskListViewController.swift */; };
 		5B57CBD92795046D00E5FE86 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57CBD82795046D00E5FE86 /* RegisterViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B4613E8279F0E38009E54DB /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		5B57CBD22794FF5200E5FE86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5B57CBD42794FF8B00E5FE86 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		5B57CBD82795046D00E5FE86 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				5B5A974C2797E94600759F8D /* ImageCollectionViewCell.swift */,
 				5B5A975227987CC000759F8D /* TaskTableViewCell.swift */,
 				5BC4073D279E203D00EA8EC9 /* CategoryTableViewCell.swift */,
+				5B4613E8279F0E38009E54DB /* SubtaskTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				5BBCBEED279B488D00065BF4 /* TaskManager.xcdatamodeld in Sources */,
 				5B5A975527987FCE00759F8D /* CommonExtension.swift in Sources */,
 				5BC40740279E211500EA8EC9 /* CategoryViewController.swift in Sources */,
+				5B4613E9279F0E38009E54DB /* SubtaskTableViewCell.swift in Sources */,
 				5B57CBD52794FF8B00E5FE86 /* TaskListViewController.swift in Sources */,
 				5BC4073E279E203D00EA8EC9 /* CategoryTableViewCell.swift in Sources */,
 			);

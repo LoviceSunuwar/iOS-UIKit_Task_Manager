@@ -12,7 +12,6 @@ import AVFoundation
 class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var taskTitleTextField: UITextField!
-    //    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -26,6 +25,8 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     @IBOutlet weak var displayAudio: UIStackView!
     @IBOutlet weak var audioName: UILabel!
     @IBOutlet weak var playSavedAudio: UIButton!
+    @IBOutlet weak var addSubTaskSection: UIStackView!
+    @IBOutlet weak var subtaskTV: UITableView!
     
     // For Audio Recorder and Player
     var audioRecorder: AVAudioRecorder!
@@ -39,6 +40,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     
     //    var category = [Category]()
     var selectedCategory: Category!
+    var subTaskList = [SubTask]()
     
     var task: Task! = nil
     var taskList = [Task]()
@@ -57,6 +59,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         addAudioSection.isHidden = true
         displayAudio.isHidden = true
         setupCollectionView()
+        setupTableView()
         setupData()
     }
     
@@ -67,7 +70,9 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     
     func setupData() {
         if task != nil {
+            getSubTask()
             taskTitleTextField.text = task!.title
+            subtaskTV.isHidden = subTaskList.count < 1
             //            let categoryIndex = category.firstIndex(of: task.category!)!
             //            pickerView.selectRow(categoryIndex, inComponent: 0, animated: true)
             self.images = task.images!
@@ -84,6 +89,8 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         } else {
             createButton.setTitle("Create", for: .normal)
             self.title = "Add Task"
+            subtaskTV.isHidden = true
+            addSubTaskSection.isHidden = true
         }
         
         
@@ -92,6 +99,11 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+    
+    func setupTableView() {
+        subtaskTV.dataSource = self
+        subtaskTV.delegate = self
     }
     
     func reloadCollectionView() {
@@ -133,6 +145,11 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         }
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func addSubTask(_ sender: UIButton) {
+        saveSubTask(subtask: nil, index: nil)
+        subtaskTV.isHidden = false
     }
     
     @IBAction func addAudio(_ sender: UIButton) {
@@ -234,6 +251,64 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             okAction?()
         }))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func saveSubTask(subtask: SubTask!, index: Int!) {
+        var subtaskTitle = UITextField()
+        let isEdit = subtask != nil
+        let alert = UIAlertController(title: (!isEdit ? "Add" : "Edit") + " Subtask", message: nil, preferredStyle: .alert)
+        let addAction = UIAlertAction(title: (!isEdit ? "Add" : "Edit"), style: .default) { (action) in
+            if !subtaskTitle.text!.isEmpty {
+                if !isEdit {
+                    if self.subTaskList.first(where: {$0.title == subtaskTitle.text}) == nil {
+                        let newSubtask = SubTask(context: context)
+                        newSubtask.title = subtaskTitle.text
+                        newSubtask.parentTask = self.task
+                        newSubtask.isCompleted = false
+                        self.task.isCompleted = false
+                        self.subTaskList.append(newSubtask)
+                        
+                    } else {
+                        self.alert(message: "Subtask already exists", title: nil, okAction: nil)
+                    }
+                } else {
+                    subtask.title = subtaskTitle.text
+                    self.subTaskList[index] = subtask
+                }
+                appDelegate.saveContext()
+                self.subtaskTV.reloadData()
+                self.loadTask?()
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor.orange, forKey: "titleTextColor")
+        
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        alert.addTextField { (field) in
+            subtaskTitle = field
+            subtaskTitle.placeholder = "Subtask"
+            if isEdit {
+                subtaskTitle.text = subtask.title
+            }
+        }
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Core Data Methods
+    func getSubTask(){
+        if task != nil {
+            let request: NSFetchRequest<SubTask> = SubTask.fetchRequest()
+            do {
+                let subTasks = try context.fetch(request)
+                subTaskList = subTasks.filter({ (task) -> Bool in
+                    return task.parentTask == self.task
+                })
+            } catch {
+                print("Error loading tasks ",error.localizedDescription)
+            }
+        }
     }
     
     // MARK: Audio Methods
@@ -439,4 +514,38 @@ extension UICollectionView {
 }
 // For Collection View END
 
+// MARK: UITableViewDelegate
+extension AddEditViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+}
+
+// MARK: UITableViewDataSource
+extension AddEditViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return subTaskList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let obj = subTaskList[indexPath.row]
+        let cell = subtaskTV.dequeueReusableCell(withIdentifier: "subtaskCell", for: indexPath) as! SubtaskTableViewCell
+        cell.setCell(obj: obj)
+        
+        cell.radioButtonTapped = {
+            obj.isCompleted = !obj.isCompleted
+            appDelegate.saveContext()
+            self.subtaskTV.reloadData()
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        saveSubTask(subtask: subTaskList[indexPath.row], index: indexPath.row)
+        
+    }
+    
+    
+}
 

@@ -381,14 +381,95 @@
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gQ7-XS-pdv">
+                                                        <rect key="frame" x="0.0" y="54" width="382" height="42"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4t-h4-zzg">
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6x-Qc-W2D">
+                                                                <rect key="frame" x="340" y="0.0" width="42" height="42"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="a6x-Qc-W2D" secondAttribute="height" multiplier="1:1" id="AP5-Ji-fsP"/>
+                                                                </constraints>
+                                                                <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="addSubTask:" destination="bal-kV-cbV" eventType="touchUpInside" id="cmc-mE-88I"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="42" id="j93-QI-iBB"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4gg-Qd-1Mj">
+                                                        <rect key="frame" x="0.0" y="116" width="382" height="128"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <prototypes>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="subtaskCell" id="mto-V0-TtE" customClass="SubtaskTableViewCell" customModule="FinalProject_Friends_iOS" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="44.5" width="382" height="34.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mto-V0-TtE" id="zj0-K5-Kv7">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="34.5"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6kG-50-bLf">
+                                                                            <rect key="frame" x="16" y="5" width="350" height="24.5"/>
+                                                                            <subviews>
+                                                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8J5-bq-mie">
+                                                                                    <rect key="frame" x="0.0" y="0.5" width="24" height="24"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" secondItem="8J5-bq-mie" secondAttribute="height" multiplier="1:1" id="61x-Ru-rwt"/>
+                                                                                        <constraint firstAttribute="height" constant="24" id="CUD-ec-Zcv"/>
+                                                                                    </constraints>
+                                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                    <state key="normal" image="radio_deselection"/>
+                                                                                    <state key="selected" image="checkmark-1"/>
+                                                                                    <connections>
+                                                                                        <action selector="isCompletedHandler:" destination="mto-V0-TtE" eventType="touchUpInside" id="b2e-bj-Pb5"/>
+                                                                                    </connections>
+                                                                                </button>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sQh-Se-PaO">
+                                                                                    <rect key="frame" x="34" y="1.5" width="316" height="21.5"/>
+                                                                                    <subviews>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyx-SR-Cda">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="316" height="21.5"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                    </subviews>
+                                                                                </stackView>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="bottom" secondItem="6kG-50-bLf" secondAttribute="bottom" constant="5" id="BMr-Vs-dv7"/>
+                                                                        <constraint firstItem="6kG-50-bLf" firstAttribute="top" secondItem="zj0-K5-Kv7" secondAttribute="top" constant="5" id="Y0S-g4-vor"/>
+                                                                        <constraint firstItem="6kG-50-bLf" firstAttribute="leading" secondItem="zj0-K5-Kv7" secondAttribute="leading" constant="16" id="g3d-Vl-3jS"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="6kG-50-bLf" secondAttribute="trailing" constant="16" id="hIE-jo-ljR"/>
+                                                                    </constraints>
+                                                                </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="isCompleted" destination="8J5-bq-mie" id="RZN-XD-ZwP"/>
+                                                                    <outlet property="subtaskTitle" destination="qyx-SR-Cda" id="mje-mi-hTQ"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                        </prototypes>
+                                                    </tableView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Pictures:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNr-ne-LCT">
-                                                        <rect key="frame" x="0.0" y="54" width="382" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="264" width="382" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qQT-D0-0xL">
-                                                        <rect key="frame" x="0.0" y="94.5" width="382" height="100"/>
+                                                        <rect key="frame" x="0.0" y="304.5" width="382" height="100"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="Vx4-BW-ee7"/>
@@ -446,7 +527,7 @@
                                                         </cells>
                                                     </collectionView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r0A-OO-UpT">
-                                                        <rect key="frame" x="0.0" y="214.5" width="382" height="42"/>
+                                                        <rect key="frame" x="0.0" y="424.5" width="382" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Clip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-Yr-rXL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
@@ -472,7 +553,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7oB-QI-pQk">
-                                                        <rect key="frame" x="0.0" y="276.5" width="382" height="31"/>
+                                                        <rect key="frame" x="0.0" y="486.5" width="382" height="31"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gOP-36-0jV">
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="31"/>
@@ -623,6 +704,7 @@
                     <connections>
                         <outlet property="addAudioButton" destination="ghc-5B-hLy" id="OJ2-hl-Jkf"/>
                         <outlet property="addAudioSection" destination="7oB-QI-pQk" id="Lsk-Tb-fpu"/>
+                        <outlet property="addSubTaskSection" destination="gQ7-XS-pdv" id="jnn-2q-88I"/>
                         <outlet property="audioName" destination="Orz-3e-Grd" id="BjF-di-uYh"/>
                         <outlet property="cancelAudioButton" destination="iCv-BO-wP4" id="v32-GZ-QZ3"/>
                         <outlet property="collectionView" destination="qQT-D0-0xL" id="EhE-aZ-WrA"/>
@@ -634,6 +716,7 @@
                         <outlet property="recordingButton" destination="D4z-Hh-Fdp" id="kbr-bS-xDc"/>
                         <outlet property="recordingTimeLabel" destination="dEf-Yr-rXL" id="txN-wp-x0t"/>
                         <outlet property="saveAudioButton" destination="psE-gE-mEQ" id="xox-dE-cnb"/>
+                        <outlet property="subtaskTV" destination="4gg-Qd-1Mj" id="xRG-xD-xIV"/>
                         <outlet property="taskTitleTextField" destination="7Fo-VZ-3se" id="RcL-Fv-5Xm"/>
                     </connections>
                 </viewController>

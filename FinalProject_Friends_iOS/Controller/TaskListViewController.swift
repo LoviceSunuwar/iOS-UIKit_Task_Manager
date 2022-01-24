@@ -77,6 +77,19 @@ class TaskListViewController: UIViewController {
         }
     }
     
+    private func getSubTask(task: Task) -> [SubTask] {
+        let request: NSFetchRequest<SubTask> = SubTask.fetchRequest()
+        do {
+            let subTaskList = try context.fetch(request)
+            return subTaskList.filter({ (subtask) -> Bool in
+                return subtask.parentTask == task
+            })
+        } catch {
+            print("Error loading tasks ",error.localizedDescription)
+            return []
+        }
+    }
+    
     private func deleteTask(task: Task){
         context.delete(task)
     }
@@ -144,9 +157,15 @@ extension TaskListViewController: UITableViewDataSource {
         cell.setCell(obj: obj)
         
         cell.radioButtonTapped = {
-            obj.isCompleted = !obj.isCompleted
-            self.saveTask()
-            self.taskListTV.reloadData()
+            let subTask = self.getSubTask(task: obj)
+            if subTask.first(where: {!$0.isCompleted}) == nil {
+                obj.isCompleted = !obj.isCompleted
+                self.saveTask()
+                self.taskListTV.reloadData()
+            } else {
+                self.alert(message: "All subtasks must be completed first.", title: "Incomplete Task", okAction: nil)
+            }
+            
         }
         
         return cell
