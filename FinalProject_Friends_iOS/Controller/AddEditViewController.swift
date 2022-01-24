@@ -204,8 +204,8 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             {
                 recordingButton.isEnabled = false
                 saveAudioButton.isEnabled = false
-                playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-                playSavedAudio.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                playButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+                playSavedAudio.setImage(UIImage(systemName: "stop.fill"), for: .normal)
                 preparePlay()
                 audioPlayer.play()
                 isPlaying = true

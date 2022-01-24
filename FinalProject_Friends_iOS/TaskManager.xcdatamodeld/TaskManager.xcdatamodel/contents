@@ -3,7 +3,7 @@
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="taskCategory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="category" inverseEntity="Task"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="usercategory" inverseEntity="User"/>
     </entity>
     <entity name="SubTask" representedClassName="SubTask" syncable="YES" codeGenerationType="class">
         <attribute name="isCmpleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -26,11 +26,12 @@
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="usercategory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="user" inverseEntity="Category"/>
     </entity>
     <elements>
-        <element name="Category" positionX="114.0086669921875" positionY="208.9840698242188" width="128" height="74"/>
-        <element name="Task" positionX="-473.4944458007812" positionY="178.5926208496094" width="128" height="149"/>
-        <element name="User" positionX="-45" positionY="54" width="128" height="118"/>
-        <element name="SubTask" positionX="-261" positionY="189" width="128" height="74"/>
+        <element name="Category" positionX="-91.3948974609375" positionY="196.5184326171876" width="128" height="74"/>
+        <element name="Task" positionX="-316.5450439453124" positionY="232.5638732910157" width="128" height="149"/>
+        <element name="User" positionX="-77.54541015625" positionY="-19.47773742675781" width="128" height="119"/>
+        <element name="SubTask" positionX="-295.3585815429688" positionY="465.7203369140625" width="128" height="74"/>
     </elements>
 </model>

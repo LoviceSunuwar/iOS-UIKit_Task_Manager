@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -408,7 +407,7 @@
                                                                         </imageView>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybB-KL-XS3">
                                                                             <rect key="frame" x="70" y="-15" width="30" height="30"/>
-                                                                            <color key="backgroundColor" name="AccentColor"/>
+                                                                            <color key="backgroundColor" red="0.231372565" green="0.32549020649999999" blue="0.68235301969999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" secondItem="ybB-KL-XS3" secondAttribute="height" multiplier="1:1" id="YLj-pC-1Rq"/>
                                                                                 <constraint firstAttribute="height" constant="30" id="lcy-UT-RPj"/>
@@ -474,7 +473,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4z-Hh-Fdp">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80.5" height="31"/>
-                                                                        <color key="tintColor" red="1" green="0.27922183499999997" blue="0.019290488469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="tintColor" red="0.77250155053957548" green="0.21497010334687658" blue="0.017232685643913646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                         <state key="normal" image="circle.fill" catalog="system">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -485,6 +484,7 @@
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baR-Ko-uGc">
                                                                         <rect key="frame" x="100.5" y="0.0" width="80.5" height="31"/>
+                                                                        <color key="tintColor" red="0.231372565" green="0.32549020649999999" blue="0.68235301969999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
                                                                         <connections>
@@ -530,6 +530,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="UPM-Zy-Wq7" secondAttribute="height" multiplier="1:1" id="yBn-cb-tzc"/>
                                                                         </constraints>
+                                                                        <color key="tintColor" red="0.231372565" green="0.32549020649999999" blue="0.68235301969999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
                                                                         <connections>
@@ -541,7 +542,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="r3p-ru-Ti4" secondAttribute="height" multiplier="1:1" id="p4E-4X-7G0"/>
                                                                         </constraints>
-                                                                        <color key="tintColor" red="1" green="0.27922183499999997" blue="0.019290488469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="tintColor" red="0.79703891638553503" green="0.22179830979912477" blue="0.017780056340914549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="trash.fill" catalog="system"/>
                                                                         <connections>
@@ -632,7 +633,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6X-RP-esM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7244.9275362318849" y="-29.464285714285712"/>
+            <point key="canvasLocation" x="6281" y="-34"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="kCq-t4-FQt">
@@ -816,6 +817,7 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="mqQ-fS-r5f">
+                                <color key="tintColor" red="0.231372565" green="0.32549020649999999" blue="0.68235301969999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="addCategory:" destination="EW5-pB-oEi" id="P3p-xp-rqX"/>
                                 </connections>
@@ -861,9 +863,6 @@
         <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
