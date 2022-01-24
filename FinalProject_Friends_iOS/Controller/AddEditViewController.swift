@@ -12,7 +12,6 @@ import AVFoundation
 class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var taskTitleTextField: UITextField!
-    //    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -149,6 +148,8 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     }
     
     @IBAction func addSubTask(_ sender: UIButton) {
+        saveSubTask(subtask: nil, index: nil)
+        subtaskTV.isHidden = false
     }
     
     @IBAction func addAudio(_ sender: UIButton) {
@@ -250,6 +251,49 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             okAction?()
         }))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func saveSubTask(subtask: SubTask!, index: Int!) {
+        var subtaskTitle = UITextField()
+        let isEdit = subtask != nil
+        let alert = UIAlertController(title: (!isEdit ? "Add" : "Edit") + " Subtask", message: nil, preferredStyle: .alert)
+        let addAction = UIAlertAction(title: (!isEdit ? "Add" : "Edit"), style: .default) { (action) in
+            if !subtaskTitle.text!.isEmpty {
+                if !isEdit {
+                    if self.subTaskList.first(where: {$0.title == subtaskTitle.text}) == nil {
+                        let newSubtask = SubTask(context: context)
+                        newSubtask.title = subtaskTitle.text
+                        newSubtask.parentTask = self.task
+                        newSubtask.isCompleted = false
+                        self.task.isCompleted = false
+                        self.subTaskList.append(newSubtask)
+                        
+                    } else {
+                        self.alert(message: "Subtask already exists", title: nil, okAction: nil)
+                    }
+                } else {
+                    subtask.title = subtaskTitle.text
+                    self.subTaskList[index] = subtask
+                }
+                appDelegate.saveContext()
+                self.subtaskTV.reloadData()
+                self.loadTask?()
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor.orange, forKey: "titleTextColor")
+        
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        alert.addTextField { (field) in
+            subtaskTitle = field
+            subtaskTitle.placeholder = "Subtask"
+            if isEdit {
+                subtaskTitle.text = subtask.title
+            }
+        }
+        
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: Core Data Methods
@@ -495,6 +539,11 @@ extension AddEditViewController: UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        saveSubTask(subtask: subTaskList[indexPath.row], index: indexPath.row)
+        
     }
     
     
