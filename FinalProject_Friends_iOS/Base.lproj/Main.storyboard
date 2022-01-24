@@ -98,9 +98,27 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96p-Zo-cvk">
                                         <rect key="frame" x="0.0" y="0.0" width="415" height="837"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get results." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96w-pf-VQu">
-                                                <rect key="frame" x="20" y="387" width="92.5" height="21"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Get results." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96w-pf-VQu">
+                                                <rect key="frame" x="161" y="365" width="111" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Organize your tasks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi8-nm-GSv">
+                                                <rect key="frame" x="123" y="316" width="188" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="WwM-xD-HSl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="&amp;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaV-z5-Ice">
+                                                <rect key="frame" x="202" y="345" width="30" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="Fif-db-fgG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -109,6 +127,7 @@
                                         <constraints>
                                             <constraint firstItem="96w-pf-VQu" firstAttribute="leading" secondItem="96p-Zo-cvk" secondAttribute="leading" constant="20" id="8O1-Ut-HPD"/>
                                             <constraint firstAttribute="width" constant="415" id="9qA-aS-Dq3"/>
+                                            <constraint firstItem="96w-pf-VQu" firstAttribute="top" secondItem="Bi8-nm-GSv" secondAttribute="bottom" constant="16" id="cKq-Cv-mSi"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="96w-pf-VQu" secondAttribute="trailing" constant="20" symbolic="YES" id="csK-Be-ej1"/>
                                             <constraint firstAttribute="height" constant="837" id="zO3-lu-eMc"/>
                                         </constraints>
@@ -137,10 +156,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jop-ON-2AN">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jop-ON-2AN">
                                 <rect key="frame" x="0.0" y="508" width="414" height="388"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="11e-kQ-Qnx">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="11e-kQ-Qnx">
                                         <rect key="frame" x="60" y="124" width="294" height="140"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qi4-mP-nXR">
@@ -184,26 +203,15 @@
                                     <constraint firstItem="11e-kQ-Qnx" firstAttribute="centerY" secondItem="jop-ON-2AN" secondAttribute="centerY" id="tEf-cD-clY"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organize your tasks &amp;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi8-nm-GSv">
-                                <rect key="frame" x="20" y="350" width="374" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="WwM-xD-HSl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Bi8-nm-GSv" firstAttribute="top" secondItem="pPO-Ql-oB7" secondAttribute="bottom" constant="111" id="0pK-A9-dBV"/>
                             <constraint firstItem="V3M-ri-PGP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3Di-CD-GE0"/>
                             <constraint firstItem="lS9-Nr-DXA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="128" id="6x2-P7-AJ9"/>
                             <constraint firstAttribute="bottom" secondItem="jop-ON-2AN" secondAttribute="bottom" id="8Y8-XV-wtZ"/>
                             <constraint firstItem="lS9-Nr-DXA" firstAttribute="leading" secondItem="pPO-Ql-oB7" secondAttribute="trailing" constant="20" id="Adx-6f-jsg"/>
                             <constraint firstAttribute="bottom" secondItem="jop-ON-2AN" secondAttribute="bottom" id="H48-hh-QO9"/>
-                            <constraint firstItem="Bi8-nm-GSv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="K7i-5l-G7O"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lS9-Nr-DXA" secondAttribute="trailing" constant="20" id="Kt6-GB-0hx"/>
                             <constraint firstItem="V3M-ri-PGP" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="NVf-ZP-LXd"/>
                             <constraint firstItem="V3M-ri-PGP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Ns2-uG-RCk"/>
@@ -214,8 +222,6 @@
                             <constraint firstItem="jop-ON-2AN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bKw-rJ-Pzx"/>
                             <constraint firstItem="pPO-Ql-oB7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="mMP-gz-ED6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pPO-Ql-oB7" secondAttribute="trailing" constant="295" id="p9Q-9r-5BI"/>
-                            <constraint firstItem="96w-pf-VQu" firstAttribute="top" secondItem="Bi8-nm-GSv" secondAttribute="bottom" constant="16" id="vqj-QZ-u1U"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bi8-nm-GSv" secondAttribute="trailing" constant="20" id="wM7-HU-ALN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NC4-iV-FKS"/>
@@ -811,7 +817,7 @@
                     <navigationItem key="navigationItem" title="Categories" id="C4v-NZ-Qt0">
                         <rightBarButtonItems>
                             <barButtonItem image="rectangle.portrait.and.arrow.right.fill" catalog="system" style="plain" id="K49-7B-JH6">
-                                <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
                                 <connections>
                                     <action selector="logout:" destination="EW5-pB-oEi" id="CCN-Hx-Sux"/>
                                 </connections>
