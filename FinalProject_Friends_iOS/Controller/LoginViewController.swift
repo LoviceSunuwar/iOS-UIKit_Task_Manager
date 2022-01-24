@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
             defaults.set(name, forKey: "username")
             defaults.set(pw, forKey: "password")
             
-            appDelegate.goToTaskListPage()
+            appDelegate.goToCategoryPage()
             
         } else {
             // show alert if username or password is incorrect

@@ -64,7 +64,7 @@ class RegisterViewController: UIViewController {
                     defaults.set(username.text, forKey: "username")
                     defaults.set(password.text, forKey: "password")
                     
-                    appDelegate.goToTaskListPage()
+                    appDelegate.goToCategoryPage()
                 } else {
                     let alertController = UIAlertController(title: "Invalid", message: "Password and Confirm Password must be same.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

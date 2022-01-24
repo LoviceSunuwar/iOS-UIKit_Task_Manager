@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         let username = defaults.value(forKey: "username")
         if username != nil {
-            goToTaskListPage()
+            goToCategoryPage()
         }
         return true
     }
@@ -41,9 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // To Change root vc to main task page (call when login)
-    func goToTaskListPage(){
+    func goToCategoryPage(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TaskListNavigation") as! UINavigationController
+        let vc = storyboard.instantiateViewController(withIdentifier: "CategoryNavigation") as! UINavigationController
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
     }

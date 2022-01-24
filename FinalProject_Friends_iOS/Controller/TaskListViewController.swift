@@ -12,6 +12,7 @@ class TaskListViewController: UIViewController {
     
     var taskList = [Task]()
     var searchTasks = [Task]()
+    var category: Category!
     
     var isSearching = false
     var searchController: UISearchController!
@@ -26,8 +27,6 @@ class TaskListViewController: UIViewController {
         setupTableView()
         // Do any additional setup after loading the view.
         navigationBarSetup()
-        loadTasks()
-        loadCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,9 +72,7 @@ class TaskListViewController: UIViewController {
         do {
             let tasks = try context.fetch(request)
             taskList = tasks.filter({ (task) -> Bool in
-                let defaults = UserDefaults.standard
-                let username = defaults.value(forKey: "username") as! String
-                return task.user?.username == username
+                return task.category == category
             })
             sortTask()
         } catch {
@@ -89,29 +86,6 @@ class TaskListViewController: UIViewController {
     
     private func saveTask(){
         appDelegate.saveContext()
-    }
-    
-    private func loadCategories(){
-        let request: NSFetchRequest<Category> = Category.fetchRequest()
-        do {
-            let categoryList = try context.fetch(request)
-            if categoryList.count < 1 {
-                let defaultList = [
-                    ["title": "Work", "icon": "suitcase.fill"],
-                    ["title": "School", "icon": "book.fill"],
-                    ["title": "Shopping", "icon": "bag.fill"],
-                    ["title": "Groceries", "icon": "cart.fill"]
-                ]
-                for category in defaultList {
-                    let newCategory = Category(context: context)
-                    newCategory.title = category["title"]
-                    newCategory.icon = category["icon"]
-                    self.saveTask()
-                }
-            }
-        } catch {
-            print("Error loading tasks ",error.localizedDescription)
-        }
     }
     
     @IBAction func sortTask(_ sender: UIButton) {

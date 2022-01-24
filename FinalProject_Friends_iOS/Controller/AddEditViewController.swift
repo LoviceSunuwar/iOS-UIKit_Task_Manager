@@ -22,7 +22,6 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     @IBOutlet weak var saveAudioButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var cancelAudioButton: UIButton!
-    @IBOutlet weak var newAudioName: UITextField!
     @IBOutlet var recordingTimeLabel: UILabel!
     @IBOutlet weak var displayAudio: UIStackView!
     @IBOutlet weak var audioName: UILabel!
@@ -84,7 +83,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
                 recordingUrl =  URL(fileURLWithPath: task.audio!)
                 addAudioButton.isHidden = true
                 displayAudio.isHidden = false
-                audioName.text = "\(task.audio?.split(separator: "/").last)"
+                audioName.text = "\(task.audio?.split(separator: "/").last ?? "")"
             }
             
         } else {
