@@ -72,7 +72,9 @@ class TaskListViewController: UIViewController {
         do {
             let tasks = try context.fetch(request)
             taskList = tasks.filter({ (task) -> Bool in
-                return task.category == category
+                let defaults = UserDefaults.standard
+                let username = defaults.value(forKey: "username") as! String
+                return task.category == category && task.user?.username == username
             })
             sortTask()
         } catch {

@@ -4,6 +4,7 @@
         <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="taskCategory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="category" inverseEntity="Task"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
     </entity>
     <entity name="SubTask" representedClassName="SubTask" syncable="YES" codeGenerationType="class">
         <attribute name="isCmpleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -29,7 +30,7 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Category" positionX="114.0086669921875" positionY="208.9840698242188" width="128" height="74"/>
+        <element name="Category" positionX="114.0086669921875" positionY="208.9840698242188" width="128" height="89"/>
         <element name="Task" positionX="-473.4944458007812" positionY="178.5926208496094" width="128" height="164"/>
         <element name="User" positionX="-45" positionY="54" width="128" height="118"/>
         <element name="SubTask" positionX="-261" positionY="189" width="128" height="74"/>
