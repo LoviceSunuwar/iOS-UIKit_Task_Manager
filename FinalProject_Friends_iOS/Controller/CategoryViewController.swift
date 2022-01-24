@@ -54,21 +54,21 @@ class CategoryViewController: UIViewController {
         let alert = UIAlertController(title: (!isEdit ? "Add" : "Edit") + " Category", message: nil, preferredStyle: .alert)
         let addAction = UIAlertAction(title: (!isEdit ? "Add" : "Edit"), style: .default) { (action) in
             if !categoryName.text!.isEmpty {
-                if self.categories.first(where: {$0.title == categoryName.text}) == nil {
-                    if !isEdit {
+                if !isEdit {
+                    if self.categories.first(where: {$0.title == categoryName.text}) == nil {
                         let newCategory = Category(context: context)
                         newCategory.title = categoryName.text
                         newCategory.user = self.currentUser
                         self.categories.append(newCategory)
-                    } else {
-                        category.title = categoryName.text
+                    }else {
+                        self.alert(message: "Category already exists", title: nil, okAction: nil)
                     }
-                    
-                    appDelegate.saveContext()
-                    self.categoryTV.reloadData()
                 } else {
-                    self.alert(message: "Category already exists", title: nil, okAction: nil)
+                    category.title = categoryName.text
                 }
+                
+                appDelegate.saveContext()
+                self.categoryTV.reloadData()
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
