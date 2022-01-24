@@ -12,7 +12,6 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskTitle: UILabel!
     @IBOutlet weak var dueDate: UILabel!
     @IBOutlet weak var isCompleted: UIButton!
-    @IBOutlet weak var categoryIcon: UIImageView!
     
     var radioButtonTapped: (()->())?
     
@@ -24,10 +23,6 @@ class TaskTableViewCell: UITableViewCell {
     func setCell(obj: Task){
         isCompleted.isSelected = obj.isCompleted
         taskTitle.text = obj.title
-        if ((obj.category?.icon) != nil){
-            categoryIcon.image = UIImage(systemName: (obj.category?.icon)!)
-            
-        }
         if obj.isCompleted {
             dueDate.textColor = UIColor.systemGreen
             dueDate.text = "Completed"

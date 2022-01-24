@@ -62,9 +62,8 @@ class RegisterViewController: UIViewController {
                     // store username and password to check if user has logged in later
                     let defaults = UserDefaults.standard
                     defaults.set(username.text, forKey: "username")
-                    defaults.set(password.text, forKey: "password")
                     
-                    appDelegate.goToTaskListPage()
+                    appDelegate.goToCategoryPage()
                 } else {
                     let alertController = UIAlertController(title: "Invalid", message: "Password and Confirm Password must be same.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

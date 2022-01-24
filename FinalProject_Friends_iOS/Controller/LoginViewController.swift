@@ -44,9 +44,8 @@ class LoginViewController: UIViewController {
             // store username and password to check if user has logged in later
             let defaults = UserDefaults.standard
             defaults.set(name, forKey: "username")
-            defaults.set(pw, forKey: "password")
             
-            appDelegate.goToTaskListPage()
+            appDelegate.goToCategoryPage()
             
         } else {
             // show alert if username or password is incorrect
