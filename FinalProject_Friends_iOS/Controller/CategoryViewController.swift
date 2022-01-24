@@ -9,19 +9,20 @@ import UIKit
 import CoreData
 
 class CategoryViewController: UIViewController {
-
+    
     @IBOutlet weak var categoryTV: UITableView!
     
     var categories = [Category]()
-    var taskList = [Task]()
+    var currentUser:User!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupTableView()
         loadCategory()
-        loadTasks()
+        loadUsers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,11 +35,19 @@ class CategoryViewController: UIViewController {
         navigationItem.title = ""
     }
     
-
+    
+    // MARK: @IBAction
     @IBAction func addCategory(_ sender: UIBarButtonItem) {
         saveCategory(category: nil)
     }
     
+    @IBAction func logout(_ sender: UIBarButtonItem) {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "username")
+        appDelegate.goToLoginPage()
+    }
+    
+    // MARK: Custom Functions
     func saveCategory(category: Category!) {
         var categoryName = UITextField()
         let isEdit = category != nil
@@ -49,11 +58,12 @@ class CategoryViewController: UIViewController {
                     if !isEdit {
                         let newCategory = Category(context: context)
                         newCategory.title = categoryName.text
+                        newCategory.user = self.currentUser
                         self.categories.append(newCategory)
                     } else {
                         category.title = categoryName.text
                     }
-                   
+                    
                     appDelegate.saveContext()
                     self.categoryTV.reloadData()
                 } else {
@@ -95,28 +105,31 @@ class CategoryViewController: UIViewController {
     private func loadCategory(){
         let request: NSFetchRequest<Category> = Category.fetchRequest()
         do {
-            categories = try context.fetch(request)
+            //            categories = try context.fetch(request)
+            let categoryList = try context.fetch(request)
+            categories = categoryList.filter({ (category) -> Bool in
+                let defaults = UserDefaults.standard
+                let username = defaults.value(forKey: "username") as! String
+                return category.user?.username == username
+            })
         } catch {
             print("Error loading tasks ",error.localizedDescription)
         }
         
     }
     
-    private func loadTasks(){
-        let request: NSFetchRequest<Task> = Task.fetchRequest()
+    private func loadUsers(){
+        let request: NSFetchRequest<User> = User.fetchRequest()
         do {
-            let tasks = try context.fetch(request)
-            taskList = tasks.filter({ (task) -> Bool in
-                let defaults = UserDefaults.standard
-                let username = defaults.value(forKey: "username") as! String
-                return task.user?.username == username
-            })
+            let userNames = try context.fetch(request)
+            let defaults = UserDefaults.standard
+            let username = defaults.value(forKey: "username") as! String
+            currentUser = userNames.first(where: {$0.username == username})
         } catch {
-            print("Error loading tasks ",error.localizedDescription)
+            print("Error loading user ", error.localizedDescription)
         }
     }
     
-
 }
 
 // MARK: UITableViewDelegate
@@ -141,15 +154,14 @@ extension CategoryViewController: UITableViewDataSource {
         return cell
     }
     
+    //MARK: didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaskListViewController") as! TaskListViewController
-        vc.taskList = taskList.filter({ (task) -> Bool in
-            return task.category == categories[indexPath.row]
-        })
         vc.category = categories[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    // MARK: UISwipeActionsConfiguration
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let category = categories[indexPath.row]
         let delete = UIContextualAction(style: .destructive, title: "") { [weak self] (action, view, completionHandler) in

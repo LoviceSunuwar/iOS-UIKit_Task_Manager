@@ -237,7 +237,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="task" rowHeight="64" id="Ocr-OK-bW2" customClass="TaskTableViewCell" customModule="FinalProject_Friends_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="task" rowHeight="64" id="Ocr-OK-bW2" customClass="TaskTableViewCell" customModule="FinalProject_Friends_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ocr-OK-bW2" id="SPu-Ty-wBR">
@@ -261,29 +261,22 @@
                                                             </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cgc-Hr-ZoQ">
-                                                            <rect key="frame" x="34" y="4" width="298" height="46.5"/>
+                                                            <rect key="frame" x="34" y="4" width="348" height="46.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-wj-KdF">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="21.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="348" height="21.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GBN-DZ-etK">
-                                                                    <rect key="frame" x="0.0" y="29.5" width="298" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="29.5" width="348" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="1" green="0.27922183502006548" blue="0.019290488470090961" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xfc-1p-Qoo">
-                                                            <rect key="frame" x="342" y="7" width="40" height="40"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="Xfc-1p-Qoo" secondAttribute="height" multiplier="1:1" id="hkl-rf-TIQ"/>
-                                                                <constraint firstAttribute="width" constant="40" id="uvK-8x-NCO"/>
-                                                            </constraints>
-                                                        </imageView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -295,7 +288,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="categoryIcon" destination="Xfc-1p-Qoo" id="1xP-Gr-SwI"/>
                                             <outlet property="dueDate" destination="GBN-DZ-etK" id="Xn2-a4-s6m"/>
                                             <outlet property="isCompleted" destination="J4F-Np-mLT" id="RLy-4b-m42"/>
                                             <outlet property="taskTitle" destination="yrN-wj-KdF" id="kE7-M9-t3R"/>
@@ -335,20 +327,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Task Manager" id="eOm-Ya-MKI">
-                        <rightBarButtonItems>
-                            <barButtonItem image="rectangle.portrait.and.arrow.right.fill" catalog="system" style="plain" id="K49-7B-JH6">
-                                <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <action selector="logout:" destination="Lj3-Wl-kYr" id="GeC-gm-cd5"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="add" id="iIN-3t-IWW">
-                                <color key="tintColor" red="0.026589119969999998" green="0.29887035680000001" blue="0.75489267680000005" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="addTaskHandler:" destination="Lj3-Wl-kYr" id="ZU9-Ly-NMz"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iIN-3t-IWW">
+                            <color key="tintColor" red="0.026589119969999998" green="0.29887035680000001" blue="0.75489267680000005" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addTaskHandler:" destination="Lj3-Wl-kYr" id="ZU9-Ly-NMz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sortButton" destination="4V1-RS-T9M" id="Vt1-ev-Raj"/>
@@ -357,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKA-nB-ap5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6434.7826086956529" y="-29.464285714285712"/>
+            <point key="canvasLocation" x="5532" y="-24"/>
         </scene>
         <!--Add Edit View Controller-->
         <scene sceneID="J0Q-xO-oQR">
@@ -371,10 +355,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNw-27-kis">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="733.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="523"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="v7n-NU-N8B">
-                                                <rect key="frame" x="16" y="16" width="382" height="701.5"/>
+                                                <rect key="frame" x="16" y="16" width="382" height="491"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eV9-Hr-GzI">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
@@ -456,20 +440,8 @@
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fnn-fu-DEq">
-                                                        <rect key="frame" x="0.0" y="214.5" width="382" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weS-wK-uML">
-                                                        <rect key="frame" x="0.0" y="255" width="382" height="150"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="150" id="zSX-oj-PP4"/>
-                                                        </constraints>
-                                                    </pickerView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r0A-OO-UpT">
-                                                        <rect key="frame" x="0.0" y="425" width="382" height="42"/>
+                                                        <rect key="frame" x="0.0" y="214.5" width="382" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Clip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-Yr-rXL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
@@ -495,7 +467,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7oB-QI-pQk">
-                                                        <rect key="frame" x="0.0" y="487" width="382" height="31"/>
+                                                        <rect key="frame" x="0.0" y="276.5" width="382" height="31"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gOP-36-0jV">
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="31"/>
@@ -542,7 +514,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ObE-xE-zHo">
-                                                        <rect key="frame" x="0.0" y="538" width="382" height="43"/>
+                                                        <rect key="frame" x="0.0" y="327.5" width="382" height="43"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-3e-Grd">
                                                                 <rect key="frame" x="0.0" y="0.0" width="93" height="43"/>
@@ -581,13 +553,13 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-YV-G3N">
-                                                        <rect key="frame" x="0.0" y="601" width="382" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="390.5" width="382" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hIf-7H-uyT">
-                                                        <rect key="frame" x="0.0" y="641.5" width="382" height="60"/>
+                                                        <rect key="frame" x="0.0" y="431" width="382" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Z9z-3z-er0"/>
                                                         </constraints>
@@ -650,7 +622,6 @@
                         <outlet property="createButton" destination="wqK-qW-SmG" id="8Z4-Kb-yKk"/>
                         <outlet property="datePicker" destination="hIf-7H-uyT" id="U7V-sy-oTM"/>
                         <outlet property="displayAudio" destination="ObE-xE-zHo" id="l9W-fW-kzZ"/>
-                        <outlet property="pickerView" destination="weS-wK-uML" id="LQm-q1-DXs"/>
                         <outlet property="playButton" destination="baR-Ko-uGc" id="rjG-fv-fUf"/>
                         <outlet property="playSavedAudio" destination="UPM-Zy-Wq7" id="zzL-cz-zZJ"/>
                         <outlet property="recordingButton" destination="D4z-Hh-Fdp" id="kbr-bS-xDc"/>
@@ -837,11 +808,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="C4v-NZ-Qt0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mqQ-fS-r5f">
-                            <connections>
-                                <action selector="addCategory:" destination="EW5-pB-oEi" id="P3p-xp-rqX"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="rectangle.portrait.and.arrow.right.fill" catalog="system" style="plain" id="K49-7B-JH6">
+                                <color key="tintColor" red="0.2309515476" green="0.32507166269999999" blue="0.68239057059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="logout:" destination="EW5-pB-oEi" id="CCN-Hx-Sux"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="mqQ-fS-r5f">
+                                <connections>
+                                    <action selector="addCategory:" destination="EW5-pB-oEi" id="P3p-xp-rqX"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="categoryTV" destination="cz3-JX-uOr" id="Xx4-mj-IdF"/>

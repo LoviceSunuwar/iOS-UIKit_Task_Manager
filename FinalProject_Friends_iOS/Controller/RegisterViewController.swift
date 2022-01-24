@@ -62,7 +62,6 @@ class RegisterViewController: UIViewController {
                     // store username and password to check if user has logged in later
                     let defaults = UserDefaults.standard
                     defaults.set(username.text, forKey: "username")
-                    defaults.set(password.text, forKey: "password")
                     
                     appDelegate.goToCategoryPage()
                 } else {

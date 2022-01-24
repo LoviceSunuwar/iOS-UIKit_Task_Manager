@@ -12,7 +12,7 @@ import AVFoundation
 class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var taskTitleTextField: UITextField!
-    @IBOutlet weak var pickerView: UIPickerView!
+    //    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,8 +27,6 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     @IBOutlet weak var audioName: UILabel!
     @IBOutlet weak var playSavedAudio: UIButton!
     
-    var currentUser:User!
-    
     // For Audio Recorder and Player
     var audioRecorder: AVAudioRecorder!
     var audioPlayer : AVAudioPlayer!
@@ -39,7 +37,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     var recordingUrl:URL!;
     
     
-    var category = [Category]()
+    //    var category = [Category]()
     var selectedCategory: Category!
     
     var task: Task! = nil
@@ -56,11 +54,8 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        loadCategory()
-        loadUsers()
         addAudioSection.isHidden = true
         displayAudio.isHidden = true
-        setupPickerView()
         setupCollectionView()
         setupData()
     }
@@ -73,8 +68,8 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
     func setupData() {
         if task != nil {
             taskTitleTextField.text = task!.title
-            let categoryIndex = category.firstIndex(of: task.category!)!
-            pickerView.selectRow(categoryIndex, inComponent: 0, animated: true)
+            //            let categoryIndex = category.firstIndex(of: task.category!)!
+            //            pickerView.selectRow(categoryIndex, inComponent: 0, animated: true)
             self.images = task.images!
             createButton.setTitle("Update", for: .normal)
             datePicker.date = task.endDate!.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss Z") ?? Date()
@@ -99,15 +94,11 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         collectionView.delegate = self
     }
     
-    func setupPickerView() {
-        pickerView.dataSource = self
-        pickerView.delegate = self
-    }
-    
     func reloadCollectionView() {
         self.collectionView.reloadData()
     }
     
+    // MARK: @IBAction
     @IBAction func createButtonHandler(_ sender: UIButton) {
         guard let title = taskTitleTextField.text, !title.isEmpty else {
             self.alert(message: "Title is required", title: "Alert", okAction: nil)
@@ -122,7 +113,6 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             newTask.endDate = "\(datePicker.date)"
             newTask.images = images
             newTask.isCompleted = false
-            newTask.user = currentUser
             if recordingUrl != nil {
                 newTask.audio = recordingUrl.path
             }
@@ -134,20 +124,15 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             task.category = selectedCategory
             task.endDate = "\(datePicker.date)"
             task.images = images
-            task.audio = recordingUrl.path
+            if recordingUrl != nil {
+                task.audio = recordingUrl.path
+                
+            }
             appDelegate.saveContext()
             self.loadTask?()
         }
         
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    func alert(message: String?, title: String? = nil, okAction: (()->())? = nil) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-            okAction?()
-        }))
-        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func addAudio(_ sender: UIButton) {
@@ -227,7 +212,7 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
             }
             else
             {
-                display_alert(msg_title: "Error", msg_desc: "Audio file is missing.", action_title: "OK")
+                alert(message: "Audio file is missing.", title: "Error", okAction: nil)
             }
         }
     }
@@ -242,27 +227,13 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         }
     }
     
-    //MARK: Core Data Methods
-    private func loadCategory(){
-        let request: NSFetchRequest<Category> = Category.fetchRequest()
-        do {
-            category = try context.fetch(request)
-            selectedCategory = category[0]
-        } catch {
-            print("Error loading category", error.localizedDescription)
-        }
-    }
-    
-    private func loadUsers(){
-        let request: NSFetchRequest<User> = User.fetchRequest()
-        do {
-            let userNames = try context.fetch(request)
-            let defaults = UserDefaults.standard
-            let username = defaults.value(forKey: "username") as! String
-            currentUser = userNames.first(where: {$0.username == username})
-        } catch {
-            print("Error loading user ", error.localizedDescription)
-        }
+    // MARK: Custom Functions
+    func alert(message: String?, title: String? = nil, okAction: (()->())? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            okAction?()
+        }))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: Audio Methods
@@ -304,13 +275,10 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         return filePath
     }
     
-    func setupRecorder()
-    {
-        if isAudioRecordingGranted
-        {
+    func setupRecorder() {
+        if isAudioRecordingGranted {
             let session = AVAudioSession.sharedInstance()
-            do
-            {
+            do {
                 try session.setCategory(AVAudioSession.Category.playAndRecord, options: .defaultToSpeaker)
                 try session.setActive(true)
                 let settings = [
@@ -325,13 +293,12 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
                 audioRecorder.isMeteringEnabled = true
                 audioRecorder.prepareToRecord()
             }
-            catch let _ {
-                //                display_alert(msg_title: "Error", msg_desc: error.localizedDescription, action_title: "OK")
+            catch let error {
+                alert(message: error.localizedDescription, title: "Error", okAction: nil)
             }
         }
-        else
-        {
-            //            display_alert(msg_title: "Error", msg_desc: "Don't have access to use your microphone.", action_title: "OK")
+        else {
+            alert(message: "Don't have access to use your microphone.", title: "Error", okAction: nil)
         }
     }
     
@@ -348,36 +315,29 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         }
     }
     
-    func finishAudioRecording(success: Bool)
-    {
-        if success
-        {
+    func finishAudioRecording(success: Bool) {
+        if success {
             audioRecorder.stop()
             audioRecorder = nil
             meterTimer.invalidate()
             print("recorded successfully.")
         }
-        else
-        {
-            //            display_alert(msg_title: "Error", msg_desc: "Recording failed.", action_title: "OK")
+        else {
+            alert(message: "Recording failed.", title: "Error", okAction: nil)
         }
     }
     
-    func preparePlay()
-    {
-        do
-        {
+    func preparePlay() {
+        do {
             audioPlayer = try AVAudioPlayer(contentsOf: recordingUrl)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
-        }
-        catch{
+        } catch{
             print("Error")
         }
     }
     
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool)
-    {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag
         {
             finishAudioRecording(success: false)
@@ -386,53 +346,14 @@ class AddEditViewController: UIViewController, AVAudioRecorderDelegate, AVAudioP
         saveAudioButton.isEnabled = true
     }
     
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
-    {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         recordingButton.isEnabled = true
         saveAudioButton.isEnabled = true
         playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         playSavedAudio.setImage(UIImage(systemName: "play.fill"), for: .normal)
         isPlaying = false
     }
-    
-    func display_alert(msg_title : String , msg_desc : String ,action_title : String)
-    {
-        let ac = UIAlertController(title: msg_title, message: msg_desc, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: action_title, style: .default)
-                     {
-            (result : UIAlertAction) -> Void in
-            _ = self.navigationController?.popViewController(animated: true)
-        })
-        present(ac, animated: true)
-    }
 }
-
-// MARK: For Picker View START
-extension AddEditViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return category.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return category[row].title
-    }
-    
-    
-}
-
-extension AddEditViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 40
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCategory = category[row]
-    }
-}
-// For Picker View END
 
 // MARK: For Collection View START
 extension AddEditViewController: UICollectionViewDataSource {
