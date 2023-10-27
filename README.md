@@ -1,6 +1,6 @@
 Introduction to the UIKit Task Manager App
 
-<img src="[https://cloud.githubusercontent.com/assets/yourgif.gif](https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/32b4c57f-9cd8-4111-bd97-7e304ec19627)" width="400" height="790">
+<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/32b4c57f-9cd8-4111-bd97-7e304ec19627" width="400" height="790">
 
 
 
