@@ -7,6 +7,7 @@ Introduction to the UIKit Task Manager App
 <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/61e869d2-23c6-4193-bf1e-7b9d78557070" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/01b35c93-3de7-4bb7-8d8e-ada2ba8af3eb" width="300" height="500"> 
 
 <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/c2784ce1-bae7-4dd5-9f07-b4faa3e2fa4a" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/ae5a04d3-5226-45a2-82df-f05e9e511795" width="300" height="500"> 
+
 <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/28132d74-96cf-444d-bd48-88ef2eb700ff" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/6df01794-4388-46aa-8c82-3d9875d9d2a4" width="300" height="500"> 
 
 
