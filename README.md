@@ -1,19 +1,18 @@
 Introduction to the UIKit Task Manager App
 
-<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/32b4c57f-9cd8-4111-bd97-7e304ec19627" width="300" height="500">  <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/0f6ba318-2f10-4e8e-aba3-1a5a1a1f74bc" width="300" height="500"> 
+<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/32b4c57f-9cd8-4111-bd97-7e304ec19627" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/0f6ba318-2f10-4e8e-aba3-1a5a1a1f74bc" width="300" height="500"> 
 
-<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/a8983786-1e81-4f09-8ffd-8e66ae543e7f" width="300" height="500">  <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/229b915e-43f3-4e9f-a01c-0f35ac0026bb" width="300" height="500"> 
+<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/a8983786-1e81-4f09-8ffd-8e66ae543e7f" width="300" height="500"> |||  <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/229b915e-43f3-4e9f-a01c-0f35ac0026bb" width="300" height="500"> 
 
-<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/61e869d2-23c6-4193-bf1e-7b9d78557070" width="300" height="500">  <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/01b35c93-3de7-4bb7-8d8e-ada2ba8af3eb" width="300" height="500"> 
+<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/61e869d2-23c6-4193-bf1e-7b9d78557070" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/01b35c93-3de7-4bb7-8d8e-ada2ba8af3eb" width="300" height="500"> 
 
-<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/c2784ce1-bae7-4dd5-9f07-b4faa3e2fa4a" width="300" height="500">  <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/ae5a04d3-5226-45a2-82df-f05e9e511795" width="300" height="500"> 
-Sorting
-<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/28132d74-96cf-444d-bd48-88ef2eb700ff" width="300" height="500">  <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/6df01794-4388-46aa-8c82-3d9875d9d2a4" width="300" height="500"> 
+<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/c2784ce1-bae7-4dd5-9f07-b4faa3e2fa4a" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/ae5a04d3-5226-45a2-82df-f05e9e511795" width="300" height="500"> 
+<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/28132d74-96cf-444d-bd48-88ef2eb700ff" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/6df01794-4388-46aa-8c82-3d9875d9d2a4" width="300" height="500"> 
 
 
-<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/4b2b18ff-7d33-4a33-b714-e62df3ab4d0c" width="300" height="500">  <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/e23cc81b-1078-458d-8af0-4556a1d5af3d" width="300" height="500"> 
+<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/4b2b18ff-7d33-4a33-b714-e62df3ab4d0c" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/e23cc81b-1078-458d-8af0-4556a1d5af3d" width="300" height="500"> 
 
-<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/2cf719bb-998d-468f-9560-8aeb3350bf53" width="300" height="500">  <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/55ce9abd-5980-44cc-83fc-6f670c8b7f27" width="300" height="500"> 
+<img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/2cf719bb-998d-468f-9560-8aeb3350bf53" width="300" height="500"> ||| <img src="https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/55ce9abd-5980-44cc-83fc-6f670c8b7f27" width="300" height="500"> 
 
 
 
