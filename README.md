@@ -1,6 +1,6 @@
 Introduction to the UIKit Task Manager App
-![Simulator Screenshot - iPhone 15 Pro - 2023-10-27 at 11 54 02](https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/f518dc49-6915-4e15-b0f2-4905c6c1322b)   ![Simulator Screenshot - iPhone 15 Pro - 2023-10-27 at 11 54 05](https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/59ede87c-ff99-4bb4-9f92-7f6bde95f237)
 
+<img src="[https://cloud.githubusercontent.com/assets/yourgif.gif](https://github.com/LoviceSunuwar/iOS-UIKit_Task_Manager/assets/53461002/32b4c57f-9cd8-4111-bd97-7e304ec19627)" width="400" height="790">
 
 
 
